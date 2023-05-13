@@ -171,6 +171,11 @@ class Reflect:
                     self.rev_d()
                     return
                 # Otherwise, increment by step as normal.
+            elif c == "&": # "Times" loop (using acc as counter).
+                self.acc -= 1
+                if self.acc > 0:
+                    self.rev_d()
+                    return
             elif c == "b": # IP-relative jump.
                 self.ip += self.stack.pop()
                 return
