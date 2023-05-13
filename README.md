@@ -1,4 +1,4 @@
-# Reflect
+# Flip
 A 1D fungeoid inspired by [Backhand](https://github.com/GrayJoKing/Backhand/).
 
 Unlike Backhand, the default step of the instruction pointer is 2; so the IP will execute a character, skip a character, execute another character, skip another character, ... etc.
