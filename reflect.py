@@ -12,8 +12,9 @@ class Reflect:
         self.other = []
 
         self.done = False
-
         self.printed = False
+        self.in_str = False
+        self.skip_next = False
 
         self.acc = 16
 
@@ -40,7 +41,13 @@ class Reflect:
 
         if self.ip >= len(self.prog):
             self.rebound()
-        else: 
+        else:
+            if self.skip_next: # Do the IP bumping in advance
+                self.skip_next = False
+                self.prev_char = self.prog[self.ip]
+                self.ip += self.ip_step
+                return
+                
             # actual command logic
             # First do numbers, +, and *.
 
@@ -58,8 +65,14 @@ class Reflect:
                 self.stack.append(self.stack.pop() + self.stack.pop())
             elif c == "*": # Multiplication.
                 self.stack.append(self.stack.pop() * self.stack.pop())
+            elif c == "~": # Negate.
+                self.stack.append(- self.stack.pop())
+            elif c == "]": # x + 1
+                self.stack.append(self.stack.pop() + 1)
+            elif c == "[": # x - 1
+                self.stack.append(self.stack.pop() - 1)
 
-            elif c == "p": # Dup.
+            elif c == "d": # Dup.
                 self.stack.append(self.stack[-1])
             elif c == "v": # Over.
                 self.stack.append(self.stack[-2])
@@ -76,6 +89,29 @@ class Reflect:
             elif c == "|": # Reverse direction.
                 self.rev_d()
                 return     # Don't auto-increment ptr at the end.
+            elif c == ":": # Reverse direction if TOS is zero.
+                # Does not pop TOS.
+                if not self.stack[-1]:
+                    self.rev_d()
+                    return
+                # Otherwise, increment by step as normal.
+
+            # Don't know how useful these are, but add them anyway.
+            elif c == ")": # Increment IP's speed.
+                self.ip_step += 1
+            elif c == "(": # Decrement IP's speed.
+                self.ip_step -= 1
+            elif c == "}": # Increment IP's speed, but only in the next iteration.
+                pass
+
+            elif c == "#": # End the prog.
+                self.done = True
+            elif c == "T": # Skip the next char.
+                self.skip_next = True
+            elif c == "Y": # If TOS is zero, skip the next char.
+                # Pops the top of stack.
+                if not self.stack.pop():
+                    self.skip_next = True
 
             self.prev_char = self.prog[self.ip]
             self.ip += self.ip_step
