@@ -75,6 +75,7 @@ Flip has 2 stacks, but it also has an accumulator. The relevant operations are l
 |:-: | :-:|
 | `=` | Equals? (a == b) |
 |`<` | Less than? (a < b) |
+|`>` | Greater than? (a > b) |
 |`!` | Logical not. |
 
 | Instruction | Description |
