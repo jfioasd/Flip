@@ -1,4 +1,5 @@
 import sys
+import math
 
 class Reflect:
     def __init__(self, prog):
@@ -95,6 +96,17 @@ class Reflect:
             elif c == "[": # x - 1
                 self.stack.append(self.stack.pop() - 1)
 
+            elif c == "d": # log10.
+                self.stack.append(math.log10(self.stack.pop()))
+            elif c == "f": # Square root.
+                self.stack.append(math.sqrt(self.stack.pop()))
+            elif c == "j": # Floor.
+                self.stack.append(math.floor(self.stack.pop()))
+            elif c == "G": # Abs.
+                self.stack.append(abs(self.stack.pop()))
+            elif c == "h": # sine.
+                self.stack.append(math.sin(self.stack.pop()))
+
             elif c == "D": # Dup.
                 self.stack.append(self.stack[-1])
             elif c == "v": # Over.
@@ -116,6 +128,24 @@ class Reflect:
                 self.stack = sorted(self.stack)
             elif c == "k": # Stack slicing (stack[-num:]).
                 self.keep(self.stack.pop())
+            elif c == "Y": # Repeat the stack N times.
+                N = self.stack.pop()
+                self.stack *= N
+            elif c == "T": # Push whether the entire stack is truthy.
+                self.stack = [int(all(self.stack))]
+
+            elif c == "e": # Push stack[N]. (Modular)
+                N = self.stack.pop()
+                self.stack.append(self.stack[N % len(self.stack)])
+            elif c == "x": # Index of stack[N]. (-1 if not found)
+                N = self.stack.pop()
+                try:
+                    self.stack.append(self.stack.index(N))
+                except ValueError:
+                    self.stack.append(-1)
+            elif c == "u": # Push whether stack contains N.
+                N = self.stack.pop()
+                self.stack.append(int(N in self.stack))
 
             elif c == "=": # Equality.
                 self.stack.append(int(self.stack.pop() == self.stack.pop()))
