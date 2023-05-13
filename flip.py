@@ -155,8 +155,12 @@ class Flip:
                 self.stack = sorted(self.stack)
             elif c == "r": # Random choice.
                 self.stack = [random.choice(self.stack)]
-            elif c == "k": # Stack slicing (stack[-num:]).
+            elif c == "k": # Take: (stack[-num:]).
                 self.keep(self.stack.pop())
+            elif c == "p": # Cut: (other = stack[-num:], stack = [:-num])
+                N = self.stack.pop()
+                self.other += self.stack[-N:]
+                self.stack = self.stack[:-N]
             elif c == "X": # Remove all occurrences of TOS in stack.
                 N = self.stack.pop()
                 self.stack = list(filter(lambda x: x != N, self.stack))
