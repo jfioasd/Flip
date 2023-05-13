@@ -1,7 +1,7 @@
 import sys
 import math
 
-class Reflect:
+class Flip:
     def __init__(self, prog):
         self.prog = prog
         self.ip = 0
@@ -44,7 +44,9 @@ class Reflect:
             return
 
         if self.ip >= len(self.prog):
-            self.rebound()
+            # Implicit `|` is also not as useful.
+            self.done = True
+            return
         else:
             if self.skip_next: # Do the IP bumping in advance
                 self.skip_next = False
@@ -104,7 +106,7 @@ class Reflect:
                 self.stack.append(math.floor(self.stack.pop()))
             elif c == "G": # Abs.
                 self.stack.append(abs(self.stack.pop()))
-            elif c == "h": # sine.
+            elif c == "h": # Sine.
                 self.stack.append(math.sin(self.stack.pop()))
 
             elif c == "D": # Dup.
@@ -222,7 +224,7 @@ class Reflect:
 if __name__ == "__main__":
     prog = open(sys.argv[1]).read()
 
-    x = Reflect(prog)
+    x = Flip(prog)
     while not x.done:
         x.run()
 
