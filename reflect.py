@@ -116,7 +116,15 @@ class Reflect:
             elif c == ";": # Drop.
                 self.stack.pop()
 
-            elif c == "A": # Sum the stack.
+            elif c == "A": # Pop to accumulator.
+                self.acc = self.stack.pop()
+            elif c == "a": # Push accumulator to the stack.
+                self.stack.append(self.acc)
+
+            elif c == "L": # swap the two stacks.
+                self.stack, self.other = self.other, self.stack
+
+            elif c == "Z": # Sum the stack.
                 self.stack = [sum(self.stack)]
             elif c == "w": # Length of the stack.
                 self.stack.append(len(self.stack))
@@ -174,7 +182,7 @@ class Reflect:
                 print("".join(map(chr,self.stack)))
                 self.printed = True
             elif c == "z": # Pop, and print TOS as a number.
-                print(stack.pop())
+                print(self.stack.pop())
                 self.printed = True
 
             elif c == "#": # End the prog.
