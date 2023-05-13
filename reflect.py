@@ -18,6 +18,9 @@ class Reflect:
 
         self.acc = 16
 
+    def keep(self, num):
+        self.stack = self.stack[-num:]
+
     def rebound(self):
         self.ip_step = - self.ip_step 
 
@@ -82,6 +85,9 @@ class Reflect:
             elif c == "/": # Division.
                 RHS, LHS = self.stack.pop(), self.stack.pop()
                 self.stack.append(LHS / RHS)
+            elif c == "^": # Exponentiation.
+                RHS, LHS = self.stack.pop(), self.stack.pop()
+                self.stack.append(LHS ** RHS)
             elif c == "~": # Negate.
                 self.stack.append(- self.stack.pop())
             elif c == "]": # x + 1
@@ -106,6 +112,10 @@ class Reflect:
                 self.stack = self.stack[::-1]
             elif c == "y": # Put TOS to the bottom of the stack.
                 self.stack = [self.stack[-1]] + self.stack[:-1]
+            elif c == "t": # Sort the stack.
+                self.stack = sorted(self.stack)
+            elif c == "k": # Stack slicing (stack[-num:]).
+                self.keep(self.stack.pop())
 
             elif c == "=": # Equality.
                 self.stack.append(int(self.stack.pop() == self.stack.pop()))
