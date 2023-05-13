@@ -17,6 +17,7 @@ class Flip:
         self.printed = False
         self.in_str = False
         self.skip_next = False
+        self.next_char = False
 
         self.acc = 16
 
@@ -55,6 +56,13 @@ class Flip:
                 self.ip += self.ip_step
                 return
 
+            if self.next_char: # Also do the IP bumping in advance
+                self.stack.append(ord(self.prog[self.ip]))
+                self.next_char = False
+                self.prev_char = self.prog[self.ip]
+                self.ip += self.ip_step
+                return
+
             if self.in_str:
                 if self.prog[self.ip] == '"': # End string.
                     self.in_str = False
@@ -72,6 +80,8 @@ class Flip:
 
             if c == '"': # Strings.
                 self.in_str = True
+            elif c == "'": # Single char string.
+                self.next_char = True
             elif c.isdigit(): # Numbers.
                 if self.ip > 0 and \
                     self.prev_char in "0123456789": # multi-digit.
@@ -109,12 +119,10 @@ class Flip:
                 self.stack.append(math.log10(self.stack.pop()))
             elif c == "f": # Square root.
                 self.stack.append(math.sqrt(self.stack.pop()))
-            elif c == "j": # Floor.
-                self.stack.append(math.floor(self.stack.pop()))
+            elif c == "j": # 2**X.
+                self.stack.append(2 ** self.stack.pop())
             elif c == "G": # Abs.
                 self.stack.append(abs(self.stack.pop()))
-            elif c == "h": # Sine.
-                self.stack.append(math.sin(self.stack.pop()))
             elif c == "E": # Factorial.
                 self.stack.append(math.factorial(self.stack.pop()))
 
