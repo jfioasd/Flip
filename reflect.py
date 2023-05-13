@@ -8,6 +8,8 @@ class Reflect:
         self.stack = []
         self.otherstack = []
 
+        self.done = False
+
         self.acc = 16
 
     def rebound(self):
@@ -16,20 +18,22 @@ class Reflect:
 
     def run(self):
         # only do the main loop for now
+        if self.ip < 0:
+            self.done = True
+            return
+        print(self.ip)
 
-        while True:
-            if self.ip < 0: break
-            print(self.ip)
+        if self.ip >= len(self.prog):
+            self.rebound()
+        else: # If not out of right bound, exec instrs normally
+            # none defined yet, so just print debug info.
+            print(self.ip, ":", repr(self.prog[self.ip]))
 
-            if self.ip >= len(self.prog):
-                self.rebound()
-            else: # If not out of right bound, exec instrs normally
-                # none defined yet, so just print debug info.
-                print(self.ip, ":", repr(self.prog[self.ip]))
-
-                self.ip += self.ip_step
+            self.ip += self.ip_step
 
 if __name__ == "__main__":
     prog = open(sys.argv[1]).read()
 
-    Reflect(prog).run()
+    x = Reflect(prog)
+    while not x.done:
+        x.run()
