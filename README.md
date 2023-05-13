@@ -42,6 +42,8 @@ If you want to add the behavior of rebounding to your code, you have 3 options:
 
 Like Backhand, you can `)` to increment the step of the IP, and `(` to decrement the step of the IP.
 
+You can `{` for stepping IP left 1, and `}` for stepping IP left 1 if TOS is truthy.
+
 You can also `b` to do an IP-relative jump (`IP += stack.pop()`)
 
 ## Data structures
