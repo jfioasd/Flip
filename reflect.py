@@ -131,7 +131,7 @@ class Reflect:
             elif c == "Y": # Repeat the stack N times.
                 N = self.stack.pop()
                 self.stack *= N
-            elif c == "T": # Push whether the entire stack is truthy.
+            elif c == "T": # Push whether all items in the stack is truthy.
                 self.stack = [int(all(self.stack))]
 
             elif c == "e": # Push stack[N]. (Modular)
