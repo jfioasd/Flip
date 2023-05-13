@@ -96,4 +96,4 @@ Reflect has 2 stacks, but it also has an accumulator. The relevant operations ar
 |`R` | Reverse the stack. |
 |`y` | Shift TOS to the bottom of the stack. |
 |`t` | sort the stack. |
-
+|`k` | `stack = stack[-stack.pop():]`|
