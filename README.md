@@ -106,10 +106,10 @@ Flip has 2 stacks, but it also has an accumulator. The relevant operations are l
 |`R` | Reverse the stack. |
 |`y` | Shift TOS to the bottom of the stack. |
 |`t` | sort the stack. |
-|`k` | `stack = stack[-stack.pop():]`|
+|`k` | Stack slicing: `stack = stack[-stack.pop():]`|
 |`Y` | Repeat the stack TOS times. |
-|`T` | `stack = all(stack)`|
-|`e` | `stack[stack.pop() % len(stack)]`|
+|`T` | All: `stack = [all(stack)]`|
+|`e` | Modular indexing: push `stack[stack.pop() % len(stack)]`. |
 |`x` | Index of TOS in stack, or `-1` if not found. |
 |`u` | Push 1 if the stack contains TOS, 0 otherwise. |
 
