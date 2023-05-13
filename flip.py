@@ -165,11 +165,6 @@ class Flip:
                 self.stack *= N
             elif c == "T": # Push whether all items in the stack is truthy.
                 self.stack = [int(all(self.stack))]
-            elif c == "F": # Push digits of TOS.
-                x = str(self.stack.pop())
-                for i in x:
-                    if i.isdigit():
-                        self.stack.append(int(i))
 
             elif c == "e": # Push stack[N]. (Modular)
                 N = self.stack.pop()
