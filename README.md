@@ -66,7 +66,7 @@ Flip has 2 stacks, but it also has an accumulator. The relevant operations are l
 | `*`         | Multiply: `( a b -- a*b )` |
 | `%`         | Modulo: `( a b -- a%b )` |
 | `/`         | Integer Division: `( a b -- a//b )` |
-| `\\`        | Float division: `( a b -- a/b )` |
+| `\`        | Float division: `( a b -- a/b )` |
 | `^`         | Exponentiation: `( a b -- a**b )` |
 | `~`         | Negate TOS. |
 | `]`         | Increment TOS. |
