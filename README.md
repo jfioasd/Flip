@@ -66,6 +66,7 @@ Flip has 2 stacks, but it also has an accumulator. The relevant operations are l
 | `*`         | Multiply: `( a b -- a*b )` |
 | `%`         | Modulo: `( a b -- a%b )` |
 | `/`         | Integer Division: `( a b -- a//b )` |
+| `\\`        | Float division: `( a b -- a/b )` |
 | `^`         | Exponentiation: `( a b -- a**b )` |
 | `~`         | Negate TOS. |
 | `]`         | Increment TOS. |
@@ -107,10 +108,12 @@ Flip has 2 stacks, but it also has an accumulator. The relevant operations are l
 |`R` | Reverse the stack. |
 |`y` | Shift TOS to the bottom of the stack. |
 |`t` | sort the stack. |
+|`r` | Clear stack, and push random item from stack. |
 |`k` | Stack slicing: `stack = stack[-stack.pop():]`|
 |`Y` | Repeat the stack TOS times. |
 |`T` | All: `stack = [all(stack)]`|
 |`F` | Push base-10 digits of TOS onto the stack. |
+|`X` | Remove all occurrences of TOS from the stack. |
 |`e` | Modular indexing: push `stack[stack.pop() % len(stack)]`. |
 |`x` | Index of TOS in stack, or `-1` if not found. |
 |`u` | Push 1 if the stack contains TOS, 0 otherwise. |
