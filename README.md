@@ -117,7 +117,7 @@ Flip has 2 stacks, but it also has an accumulator. The relevant operations are l
 |:-:| :-:|
 |`\|` | Rebound the IP. |
 |`:` | rebound if tos is nonzero (pops tos). |
-|`&`| Decrement acc. If acc > 0, rebound. (Useful for implementing a downwards `repeat` loop.) |
+|`&`| Decrement acc. If acc > 0, rebound. (downwards `repeat` loop) |
 |`b` | IP-relative jump: `IP += stack.pop()` |
 |`)` | Increment IP's step by 1. |
 |`(` | Decrement IP's step by 1. |
