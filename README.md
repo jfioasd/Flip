@@ -32,6 +32,9 @@ Execution order:
 
      When IP goes over the left bound, execution is terminated, and [3] is printed.
 ```
-If you want to implement the behavior of reflection, you have 3 builtins:
+If you want to add the behavior of rebounding to your code, you have 3 options:
 
-* `|`:
+* `|`: Directly rebound the IP, like I've described above.
+* `:`: Only rebound if TOS is nonzero (pops TOS).
+* `&`: A kind of `repeat` loop: Decrement the accumulator, and rebound if `acc > 0`.
+
