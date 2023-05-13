@@ -111,6 +111,8 @@ class Flip:
                 self.stack.append(abs(self.stack.pop()))
             elif c == "h": # Sine.
                 self.stack.append(math.sin(self.stack.pop()))
+            elif c == "E": # Factorial.
+                self.stack.append(math.factorial(self.stack.pop()))
 
             elif c == "D": # Dup.
                 self.stack.append(self.stack[-1])
@@ -159,6 +161,9 @@ class Flip:
             elif c == "u": # Push whether stack contains N.
                 N = self.stack.pop()
                 self.stack.append(int(N in self.stack))
+            elif c == "Q": # Count number of occurrences of TOS in stack.
+                N = self.stack.pop()
+                self.stack.append(self.stack.count(N))
 
             elif c == "=": # Equality.
                 self.stack.append(int(self.stack.pop() == self.stack.pop()))
