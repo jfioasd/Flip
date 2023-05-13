@@ -47,14 +47,25 @@ class Reflect:
                 self.prev_char = self.prog[self.ip]
                 self.ip += self.ip_step
                 return
-                
+
+            if self.in_str:
+                if self.prog[self.ip] == '"': # End string.
+                    self.in_str = False
+                else:
+                    self.stack.append(ord(self.prog[self.ip]))
+                self.prev_char = self.prog[self.ip]
+                self.ip += self.ip_step
+                return
+
             # actual command logic
             # First do numbers, +, and *.
 
             # print(self.ip, self.prog[self.ip])
             c = self.prog[self.ip]
 
-            if c in "0123456789": # Numbers.
+            if c == '"': # Strings.
+                self.in_str = True
+            elif c in "0123456789": # Numbers.
                 if self.ip > 0 and \
                     self.prev_char in "0123456789": # multi-digit.
                     self.stack.append(self.stack.pop()*10 + int(c))
@@ -90,8 +101,8 @@ class Reflect:
                 self.rev_d()
                 return     # Don't auto-increment ptr at the end.
             elif c == ":": # Reverse direction if TOS is zero.
-                # Does not pop TOS.
-                if not self.stack[-1]:
+                # Pops TOS, since that's more useful.
+                if not self.stack.pop():
                     self.rev_d()
                     return
                 # Otherwise, increment by step as normal.
@@ -101,8 +112,6 @@ class Reflect:
                 self.ip_step += 1
             elif c == "(": # Decrement IP's speed.
                 self.ip_step -= 1
-            elif c == "}": # Increment IP's speed, but only in the next iteration.
-                pass
 
             elif c == "#": # End the prog.
                 self.done = True
