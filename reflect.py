@@ -79,6 +79,9 @@ class Reflect:
             elif c == "%": # Modulo.
                 RHS, LHS = self.stack.pop(), self.stack.pop()
                 self.stack.append(LHS % RHS)
+            elif c == "/": # Division.
+                RHS, LHS = self.stack.pop(), self.stack.pop()
+                self.stack.append(LHS / RHS)
             elif c == "~": # Negate.
                 self.stack.append(- self.stack.pop())
             elif c == "]": # x + 1
@@ -94,6 +97,15 @@ class Reflect:
                 self.stack[-1], self.stack[-2] = self.stack[-2], self.stack[-1]
             elif c == ";": # Drop.
                 self.stack.pop()
+
+            elif c == "A": # Sum the stack.
+                self.stack = [sum(self.stack)]
+            elif c == "w": # Length of the stack.
+                self.stack.append(len(self.stack))
+            elif c == "R": # Reverse the stack.
+                self.stack = self.stack[::-1]
+            elif c == "y": # Put TOS to the bottom of the stack.
+                self.stack = [self.stack[-1]] + self.stack[:-1]
 
             elif c == "=": # Equality.
                 self.stack.append(int(self.stack.pop() == self.stack.pop()))
@@ -127,9 +139,9 @@ class Reflect:
 
             elif c == "#": # End the prog.
                 self.done = True
-            elif c == "T": # Skip the next char.
+            elif c == "K": # Skip the next char.
                 self.skip_next = True
-            elif c == "Y": # If TOS is zero, skip the next char.
+            elif c == "?": # If TOS is zero, skip the next char.
                 # Pops the top of stack.
                 if not self.stack.pop():
                     self.skip_next = True
