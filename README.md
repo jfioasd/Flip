@@ -10,6 +10,12 @@ This can be seen from the following example:
 
 Before the terminate `#` instruction, only `1`, `_`, `2`, `+` are executed. (Numbers need a separator instead of pusing individual digits.) After halting, if nothing is outputted, the entire stack is implicitly outputted, so this will output `[3]`.
 
+I'll first explain how rebounding works.
+
+* If the IP is about to step out of bounds, if it is initially facing the right, then it'll step forward 1 char and reverse direction.
+
+* Otherwise, If it's rebounding while facing the left (e.g. when you're using `|` to reflect the IP), then it'll first reverse direction, then step forward 1 char.
+
 Another thing is that although the IP will bounce back if it goes across the right bound, execution will be terminated if the IP goes over the left bound. For example, the above program can be golfed to the following:
 ```
 1+_2
@@ -19,7 +25,7 @@ Execution order:
 ```
 1    Initial IP position. 
   _  End number: Push 1.
-     IP is about to step out of bounds, so we move forward & reverse direction.
+     IP is about to step out of bounds, so we move forward 1 char & reverse direction.
      (since IP is facing the right.)
    2 Push 2.
  +   Add. (1 + 2)
