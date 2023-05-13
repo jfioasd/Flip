@@ -64,4 +64,10 @@ Reflect has 2 stacks, but it also has an accumulator. The relevant operations ar
 | `%`         | Modulo: `( a b -- a%b )` |
 | `/`         | Division: `( a b -- a/b )` |
 | `^`         | Exponentiation: `( a b -- a**b )` |
-| `~`         | Negate TOS: `( a -- -a )`|
+| `~`         | Negate TOS. |
+| `]`         | Increment TOS. |
+| `[`         | Decrement TOS. |
+
+| Instruction | Description |
+|:-:  |      :-: |
+| `d` | log10. |
