@@ -38,3 +38,15 @@ If you want to add the behavior of rebounding to your code, you have 3 options:
 * `:`: Only rebound if TOS is nonzero (pops TOS).
 * `&`: A kind of `repeat` loop: Decrement the accumulator, and rebound if `acc > 0`.
 
+Like Backhand, you can `)` to increment the step of the IP, and `(` to decrement the step of the IP.
+
+You can also `b` to do an IP-relative jump (`IP += stack.pop()`)
+
+## Data structures
+Reflect has 2 stacks, but it also has an accumulator. The relevant operations are listed below:
+
+* `L`: Exchange this stack with the other stack.
+* `a`: Push the accumulator to the stack (initially `16`)
+* `A`: Pop TOS to the accumulator
+
+## Instruction reference
