@@ -76,6 +76,9 @@ class Reflect:
                 self.stack.append(self.stack.pop() + self.stack.pop())
             elif c == "*": # Multiplication.
                 self.stack.append(self.stack.pop() * self.stack.pop())
+            elif c == "%": # Modulo.
+                RHS, LHS = self.stack.pop(), self.stack.pop()
+                self.stack.append(LHS % RHS)
             elif c == "~": # Negate.
                 self.stack.append(- self.stack.pop())
             elif c == "]": # x + 1
@@ -83,7 +86,7 @@ class Reflect:
             elif c == "[": # x - 1
                 self.stack.append(self.stack.pop() - 1)
 
-            elif c == "d": # Dup.
+            elif c == "D": # Dup.
                 self.stack.append(self.stack[-1])
             elif c == "v": # Over.
                 self.stack.append(self.stack[-2])
@@ -96,22 +99,31 @@ class Reflect:
                 self.stack.append(int(self.stack.pop() == self.stack.pop()))
             elif c == "<": # Less than.
                 self.stack.append(int(self.stack.pop() > self.stack.pop()))
+            elif c == "!": # Logical not.
+                self.stack.append(int(not self.stack.pop()))
 
             elif c == "|": # Reverse direction.
                 self.rev_d()
                 return     # Don't auto-increment ptr at the end.
-            elif c == ":": # Reverse direction if TOS is zero.
+            elif c == ":": # Reverse direction if TOS is nonzero.
                 # Pops TOS, since that's more useful.
-                if not self.stack.pop():
+                if self.stack.pop():
                     self.rev_d()
                     return
                 # Otherwise, increment by step as normal.
 
-            # Don't know how useful these are, but add them anyway.
+            # Don't know how useful these two are, but add them anyway.
             elif c == ")": # Increment IP's speed.
                 self.ip_step += 1
             elif c == "(": # Decrement IP's speed.
                 self.ip_step -= 1
+
+            elif c == "o": # Print entire stack as chr string.
+                print("".join(map(chr,self.stack)))
+                self.printed = True
+            elif c == "z": # Pop, and print TOS as a number.
+                print(stack.pop())
+                self.printed = True
 
             elif c == "#": # End the prog.
                 self.done = True
