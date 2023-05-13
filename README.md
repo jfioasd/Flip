@@ -112,5 +112,6 @@ Reflect has 2 stacks, but it also has an accumulator. The relevant operations ar
 ### Control flow
 |Instruction | Description |
 |:-:| :-:|
-|`|` | Rebound the IP. |
+|`\|` | Rebound the IP. |
 |`:` | rebound if tos is nonzero (pops tos). |
+|`&`| Decrement acc. If acc > 0, rebound. |
