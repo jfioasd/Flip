@@ -121,3 +121,13 @@ Flip has 2 stacks, but it also has an accumulator. The relevant operations are l
 |`#` | End the program.|
 |`K` | Ignore the next command scanned by the IP. |
 |`?`| Pop TOS; Ignore next command if TOS is 0. |
+
+### I/O
+|Instruction|Description|
+|:-:|:-:|
+|`o` | Print the entire stack as a `chr`'d string. |
+|`@`| Debug: Print the entire stack. |
+|`z`| Pop & print TOS as a number. |
+|`q`| Pop & print TOS as a character. |
+|`g` | Read a single character from the input. Or `0` on EOF. |
+|`V` | Read a single newline-terminated integer from the input. |
