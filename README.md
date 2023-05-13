@@ -99,4 +99,6 @@ Reflect has 2 stacks, but it also has an accumulator. The relevant operations ar
 |`k` | `stack = stack[-stack.pop():]`|
 |`Y` | Repeat the stack TOS times. |
 |`T` | `stack = all(stack)`|
-
+|`e` | `stack[stack.pop() % len(stack)]`|
+|`x` | Index of TOS in stack, or `-1` if not found. |
+|`u` | Push 1 if the stack contains TOS, 0 otherwise. |
