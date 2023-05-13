@@ -192,6 +192,18 @@ class Reflect:
             elif c == "z": # Pop, and print TOS as a number.
                 print(self.stack.pop())
                 self.printed = True
+            elif c == "q": # Pop, and print TOS as a character.
+                print(end = chr(self.stack.pop()))
+                self.printed = True
+            elif c == "g": # Push a single char from input.
+                x = sys.stdin.read(1)
+                if x == '':
+                    self.stack.append(0)
+                else:
+                    self.stack.append(ord(x))
+            elif c == "V": # Read a single integer from input (newline-terminated).
+                x = input()
+                self.stack.append(int(x))
 
             elif c == "#": # End the prog.
                 self.done = True
