@@ -8,8 +8,6 @@ class Flip:
         self.ip = 0
         self.ip_step = 2
 
-        self.prev_char = ""
-
         self.stack = []
         self.other = []
 
@@ -23,14 +21,6 @@ class Flip:
 
     def keep(self, num):
         self.stack = self.stack[-num:]
-
-    def rebound(self):
-        self.ip_step = - self.ip_step 
-
-        # Backhand's reflect only works for step=3,
-        # so it makes sense to make Reflect's reflect only work for step=2.
-
-        self.ip = len(prog) - (self.ip - len(prog) + 1)
 
     def rev_d(self): # Reverse IP direction
         if self.ip % 2 == 0: # Even.
@@ -59,7 +49,6 @@ class Flip:
             if self.next_char: # Also do the IP bumping in advance
                 self.stack.append(ord(self.prog[self.ip]))
                 self.next_char = False
-                self.prev_char = self.prog[self.ip]
                 self.ip += self.ip_step
                 return
 
@@ -68,7 +57,6 @@ class Flip:
                     self.in_str = False
                 else:
                     self.stack.append(ord(self.prog[self.ip]))
-                self.prev_char = self.prog[self.ip]
                 self.ip += self.ip_step
                 return
 
@@ -83,11 +71,7 @@ class Flip:
             elif c == "'": # Single char string.
                 self.next_char = True
             elif c.isdigit(): # Numbers.
-                if self.ip > 0 and \
-                    self.prev_char in "0123456789": # multi-digit.
-                    self.stack.append(self.stack.pop()*10 + int(c))
-                else:
-                    self.stack.append(int(c))
+                self.stack.append(int(c))
 
             elif c == "+": # Addition.
                 self.stack.append(self.stack.pop() + self.stack.pop())
@@ -254,7 +238,6 @@ class Flip:
                 if not self.stack.pop():
                     self.skip_next = True
 
-            self.prev_char = self.prog[self.ip]
             self.ip += self.ip_step
 
 if __name__ == "__main__":
