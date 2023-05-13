@@ -71,7 +71,7 @@ class Flip:
 
             if c == '"': # Strings.
                 self.in_str = True
-            elif c in "0123456789": # Numbers.
+            elif c.isdigit(): # Numbers.
                 if self.ip > 0 and \
                     self.prev_char in "0123456789": # multi-digit.
                     self.stack.append(self.stack.pop()*10 + int(c))
@@ -148,6 +148,11 @@ class Flip:
                 self.stack *= N
             elif c == "T": # Push whether all items in the stack is truthy.
                 self.stack = [int(all(self.stack))]
+            elif c == "F": # Push digits of TOS.
+                x = str(self.stack.pop())
+                for i in x:
+                    if i.isdigit():
+                        self.stack.append(int(i))
 
             elif c == "e": # Push stack[N]. (Modular)
                 N = self.stack.pop()
