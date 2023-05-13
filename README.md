@@ -69,6 +69,12 @@ Reflect has 2 stacks, but it also has an accumulator. The relevant operations ar
 | `[`         | Decrement TOS. |
 
 | Instruction | Description |
+|:-: | :-:|
+| `=` | Equals? (a == b) |
+|`<` | Less than? (a < b) |
+|`!` | Logical not. |
+
+| Instruction | Description |
 |:-:  |      :-: |
 | `d` | log10. |
 | `f` | Square root. |
