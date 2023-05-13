@@ -111,6 +111,7 @@ Flip has 2 stacks, but it also has an accumulator. The relevant operations are l
 |`r` | Push random item from stack. (Clears previous stack) |
 |`k` | Take: `stack = stack[-stack.pop():]`|
 |`p` | Cut: `N = stack.pop(); other = stack[-N:]; stack = stack[:-N]` |
+|`P` | Concatenate: `stack += other; other = []` | 
 |`Y` | Repeat the stack TOS times. |
 |`T` | All: `stack = [all(stack)]`|
 |`X` | Remove all occurrences of TOS from the stack. |
