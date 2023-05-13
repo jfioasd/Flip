@@ -108,7 +108,7 @@ Flip has 2 stacks, but it also has an accumulator. The relevant operations are l
 |`R` | Reverse the stack. |
 |`y` | Shift TOS to the bottom of the stack. |
 |`t` | sort the stack. |
-|`r` | Clear stack, and push random item from stack. |
+|`r` | Push random item from stack. (Clears previous stack) |
 |`k` | Stack slicing: `stack = stack[-stack.pop():]`|
 |`Y` | Repeat the stack TOS times. |
 |`T` | All: `stack = [all(stack)]`|
