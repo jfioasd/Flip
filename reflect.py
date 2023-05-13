@@ -171,6 +171,9 @@ class Reflect:
                     self.rev_d()
                     return
                 # Otherwise, increment by step as normal.
+            elif c == "b": # IP-relative jump.
+                self.ip += self.stack.pop()
+                return
 
             # Don't know how useful these two are, but add them anyway.
             elif c == ")": # Increment IP's speed.
