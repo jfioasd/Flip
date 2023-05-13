@@ -14,13 +14,12 @@ class Reflect:
         self.acc = 16
 
     def rebound(self):
-        if len(self.prog) % 2 == 1: # Odd length:
-            self.ip -= 1
-        else: # Even length
-            self.ip += 1
-
         self.ip_step = - self.ip_step 
-        self.ip += self.ip_step
+
+        # Backhand's rebound only works for step=3,
+        # so it makes sense to make Reflect's rebound only work for step=2.
+
+        self.ip = len(prog) - (self.ip - len(prog) + 1)
 
     def run(self):
         if self.ip < 0:
