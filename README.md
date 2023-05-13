@@ -55,7 +55,7 @@ Flip has 2 stacks, but it also has an accumulator. The relevant operations are l
 ### Constants
 | Instruction | Description |
 | :---: | :-: |
-| `0-9`       | Push a number onto the stack, or multi-digit numbers if previous character is a number. |
+| `0-9`       | Push a number onto the stack (single-digit). |
 | `"`         | Start / End string mode, in which all characters in betwen have their `ord` codes pushed onto the stack. |
 | `'`         | Push the ord code of the next character read by IP. |
 
