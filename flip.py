@@ -1,5 +1,6 @@
 import sys
 import math
+import random
 
 class Flip:
     def __init__(self, prog):
@@ -91,6 +92,9 @@ class Flip:
             elif c == "/": # Int Division.
                 RHS, LHS = self.stack.pop(), self.stack.pop()
                 self.stack.append(LHS // RHS)
+            elif c == "\\": # Float division.
+                RHS, LHS = self.stack.pop(), self.stack.pop()
+                self.stack.append(LHS / RHS)
             elif c == "^": # Exponentiation.
                 RHS, LHS = self.stack.pop(), self.stack.pop()
                 self.stack.append(LHS ** RHS)
@@ -141,8 +145,13 @@ class Flip:
                 self.stack = [self.stack[-1]] + self.stack[:-1]
             elif c == "t": # Sort the stack.
                 self.stack = sorted(self.stack)
+            elif c == "r": # Random choice.
+                self.stack = [random.choice(self.stack)]
             elif c == "k": # Stack slicing (stack[-num:]).
                 self.keep(self.stack.pop())
+            elif c == "X": # Remove all occurrences of TOS in stack.
+                N = self.stack.pop()
+                self.stack = list(filter(lambda x: x != N, self.stack))
             elif c == "Y": # Repeat the stack N times.
                 N = self.stack.pop()
                 self.stack *= N
