@@ -123,8 +123,8 @@ Flip has 2 stacks, but it also has an accumulator. The relevant operations are l
 |`)` | Increment IP's step by 1. |
 |`(` | Decrement IP's step by 1. |
 |`#` | End the program.|
-|`K` | Ignore the next command scanned by the IP. |
-|`?`| Pop TOS; Ignore next command if TOS is 0. |
+|`K` | Skip the next command scanned by the IP. |
+|`?`| Pop TOS; Skip next command if TOS is 0. |
 
 ### I/O
 |Instruction|Description|
