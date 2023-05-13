@@ -6,20 +6,32 @@ class Reflect:
         self.ip = 0
         self.ip_step = 2
 
+        self.prev_char = ""
+
         self.stack = []
-        self.otherstack = []
+        self.other = []
 
         self.done = False
+
+        self.printed = False
 
         self.acc = 16
 
     def rebound(self):
         self.ip_step = - self.ip_step 
 
-        # Backhand's rebound only works for step=3,
-        # so it makes sense to make Reflect's rebound only work for step=2.
+        # Backhand's reflect only works for step=3,
+        # so it makes sense to make Reflect's reflect only work for step=2.
 
         self.ip = len(prog) - (self.ip - len(prog) + 1)
+
+    def rev_d(self): # Reverse IP direction
+        if self.ip % 2 == 0: # Even.
+            self.ip -= 1
+        else: # Odd.
+            self.ip += 1
+
+        self.ip_step = - self.ip_step
 
     def run(self):
         if self.ip < 0:
@@ -29,9 +41,43 @@ class Reflect:
         if self.ip >= len(self.prog):
             self.rebound()
         else: 
-            # none defined yet, so just print debug info.
-            print(self.ip, ":", repr(self.prog[self.ip]))
+            # actual command logic
+            # First do numbers, +, and *.
 
+            # print(self.ip, self.prog[self.ip])
+            c = self.prog[self.ip]
+
+            if c in "0123456789": # Numbers.
+                if self.ip > 0 and \
+                    self.prev_char in "0123456789": # multi-digit.
+                    self.stack.append(self.stack.pop()*10 + int(c))
+                else:
+                    self.stack.append(int(c))
+
+            elif c == "+": # Addition.
+                self.stack.append(self.stack.pop() + self.stack.pop())
+            elif c == "*": # Multiplication.
+                self.stack.append(self.stack.pop() * self.stack.pop())
+
+            elif c == "p": # Dup.
+                self.stack.append(self.stack[-1])
+            elif c == "v": # Over.
+                self.stack.append(self.stack[-2])
+            elif c == "s": # Swap.
+                self.stack[-1], self.stack[-2] = self.stack[-2], self.stack[-1]
+            elif c == ";": # Drop.
+                self.stack.pop()
+
+            elif c == "=": # Equality.
+                self.stack.append(int(self.stack.pop() == self.stack.pop()))
+            elif c == "<": # Less than.
+                self.stack.append(int(self.stack.pop() > self.stack.pop()))
+
+            elif c == "|": # Reverse direction.
+                self.rev_d()
+                return     # Don't auto-increment ptr at the end.
+
+            self.prev_char = self.prog[self.ip]
             self.ip += self.ip_step
 
 if __name__ == "__main__":
@@ -40,3 +86,9 @@ if __name__ == "__main__":
     x = Reflect(prog)
     while not x.done:
         x.run()
+
+    if not x.printed:
+        # For now, output stack as an array.
+        # I'll change that to chr & join output
+        # when most of the coding is done.
+        print(x.stack)
