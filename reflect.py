@@ -204,6 +204,8 @@ class Reflect:
             elif c == "V": # Read a single integer from input (newline-terminated).
                 x = input()
                 self.stack.append(int(x))
+            elif c == "@": # Debug: Output stack as an array.
+                print(self.stack)
 
             elif c == "#": # End the prog.
                 self.done = True
