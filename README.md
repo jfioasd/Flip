@@ -112,7 +112,6 @@ Flip has 2 stacks, but it also has an accumulator. The relevant operations are l
 |`k` | Stack slicing: `stack = stack[-stack.pop():]`|
 |`Y` | Repeat the stack TOS times. |
 |`T` | All: `stack = [all(stack)]`|
-|`F` | Push base-10 digits of TOS onto the stack. |
 |`X` | Remove all occurrences of TOS from the stack. |
 |`e` | Modular indexing: push `stack[stack.pop() % len(stack)]`. |
 |`x` | Index of TOS in stack, or `-1` if not found. |
