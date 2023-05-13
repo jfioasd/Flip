@@ -52,11 +52,13 @@ Reflect has 2 stacks, but it also has an accumulator. The relevant operations ar
 ## Instruction reference
 ### Constants
 | Instruction | Description |
+| :---: | :-: |
 | `0-9`       | Push a number onto the stack, or multi-digit numbers if previous character is a number. |
 | `"`         | Start / End string mode, in which all characters in betwen have their `ord` codes pushed onto the stack. |
 
 ### Arithmetic and Math
 | Instruction | Description |
+| :-: | :-: |
 | `+`         | Add: `( a b -- a+b )` |
 | `*`         | Multiply: `( a b -- a*b )` |
 | `%`         | Modulo: `( a b -- a%b )` |
