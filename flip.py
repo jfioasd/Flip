@@ -142,6 +142,10 @@ class Flip:
 
             elif c == "L": # swap the two stacks.
                 self.stack, self.other = self.other, self.stack
+            elif c == ",": # Copy other[-1] to stack.
+                self.stack.append(self.other[-1])
+            elif c == ".": # Pop stack to other.
+                self.other.append(self.stack.pop())
 
             elif c == "Z": # Sum the stack.
                 self.stack = [sum(self.stack)]
