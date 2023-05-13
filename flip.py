@@ -80,14 +80,17 @@ class Flip:
 
             elif c == "+": # Addition.
                 self.stack.append(self.stack.pop() + self.stack.pop())
+            elif c == "-": # Subtraction.
+                RHS, LHS = self.stack.pop(), self.stack.pop()
+                self.stack.append(LHS - RHS)
             elif c == "*": # Multiplication.
                 self.stack.append(self.stack.pop() * self.stack.pop())
             elif c == "%": # Modulo.
                 RHS, LHS = self.stack.pop(), self.stack.pop()
                 self.stack.append(LHS % RHS)
-            elif c == "/": # Division.
+            elif c == "/": # Int Division.
                 RHS, LHS = self.stack.pop(), self.stack.pop()
-                self.stack.append(LHS / RHS)
+                self.stack.append(LHS // RHS)
             elif c == "^": # Exponentiation.
                 RHS, LHS = self.stack.pop(), self.stack.pop()
                 self.stack.append(LHS ** RHS)
