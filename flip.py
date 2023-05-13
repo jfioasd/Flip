@@ -178,6 +178,12 @@ class Flip:
                 self.stack.append(int(self.stack.pop() < self.stack.pop()))
             elif c == "!": # Logical not.
                 self.stack.append(int(not self.stack.pop()))
+            elif c == "c": # Logical and.
+                RHS, LHS = self.stack.pop(), self.stack.pop()
+                self.stack.append(int(LHS and RHS))
+            elif c == "B": # Logical or.
+                RHS, LHS = self.stack.pop(), self.stack.pop()
+                self.stack.append(int(LHS or RHS))
 
             elif c == "|": # Reverse direction.
                 self.rev_d()
