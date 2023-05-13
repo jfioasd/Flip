@@ -43,7 +43,7 @@ Like Backhand, you can `)` to increment the step of the IP, and `(` to decrement
 You can also `b` to do an IP-relative jump (`IP += stack.pop()`)
 
 ## Data structures
-Reflect has 2 stacks, but it also has an accumulator. The relevant operations are listed below:
+Flip has 2 stacks, but it also has an accumulator. The relevant operations are listed below:
 
 * `L`: Exchange this stack with the other stack.
 * `a`: Push the accumulator to the stack (initially `16`)
