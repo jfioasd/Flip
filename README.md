@@ -84,7 +84,9 @@ Reflect has 2 stacks, but it also has an accumulator. The relevant operations ar
 |`v` | Over. `(x y -- x y x)`|
 |`s` | swap. `(x y -- y x)`|
 |`;` | drop. `(... x -- ... )`|
-
+| `a` | Push the accumulator onto the stack. |
+| `A` | Pop TOS to accumulator. |
+| `L` | Exchange this stack w/ the other stack. |
 ### Stack arithmetic
 
 | Instruction | Description |
