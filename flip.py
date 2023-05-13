@@ -209,11 +209,16 @@ class Flip:
                 self.ip += self.stack.pop()
                 return
 
-            # Don't know how useful these two are, but add them anyway.
+            # Don't know how useful these are, but add them anyway.
             elif c == ")": # Increment IP's speed.
                 self.ip_step += 1
             elif c == "(": # Decrement IP's speed.
                 self.ip_step -= 1
+            elif c == "{": # IP -= 1 (doesn't affect step).
+                self.ip -= 1
+            elif c == "}": # IP -= 1 if TOS is true.
+                if self.stack.pop():
+                    self.ip -= 1
 
             elif c == "o": # Print entire stack as chr string.
                 print("".join(map(chr,self.stack)))
