@@ -57,6 +57,7 @@ Flip has 2 stacks, but it also has an accumulator. The relevant operations are l
 | :---: | :-: |
 | `0-9`       | Push a number onto the stack, or multi-digit numbers if previous character is a number. |
 | `"`         | Start / End string mode, in which all characters in betwen have their `ord` codes pushed onto the stack. |
+| `'`         | Push the ord code of the next character read by IP. |
 
 ### Arithmetic and Math
 | Instruction | Description |
@@ -83,9 +84,8 @@ Flip has 2 stacks, but it also has an accumulator. The relevant operations are l
 |:-:  |      :-: |
 | `d` | log10. |
 | `f` | Square root. |
-| `j` | floor. |
+| `j` | 2 ** X |
 | `G` | Abs. |
-| `h` | sine.|
 | `E` | Factorial of TOS. |
 
 ### Stack operations
