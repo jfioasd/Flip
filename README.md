@@ -75,3 +75,18 @@ Reflect has 2 stacks, but it also has an accumulator. The relevant operations ar
 | `j` | floor. |
 | `G` | Abs. |
 | `h` | sine.|
+
+### Stack operations
+
+| Instruction | Description |
+|:-: | :-:|
+| `D` | Dup. `(x -- x x)`|
+|`v` | Over. `(x y -- x y x)`|
+|`s` | swap. `(x y -- y x)`|
+|`;` | drop. `(... x -- ... )`|
+
+### Stack arithmetic
+
+| Instruction | Description |
+|:-:|:-:|
+|`Z` | Push the sum of the stack (clears the previous stack). |
