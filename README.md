@@ -108,3 +108,9 @@ Reflect has 2 stacks, but it also has an accumulator. The relevant operations ar
 |`e` | `stack[stack.pop() % len(stack)]`|
 |`x` | Index of TOS in stack, or `-1` if not found. |
 |`u` | Push 1 if the stack contains TOS, 0 otherwise. |
+
+### Control flow
+|Instruction | Description |
+|:-:| :-:|
+|`|` | Rebound the IP. |
+|`:` | rebound if tos is nonzero (pops tos). |
