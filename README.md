@@ -85,6 +85,7 @@ Flip has 2 stacks, but it also has an accumulator. The relevant operations are l
 | `j` | floor. |
 | `G` | Abs. |
 | `h` | sine.|
+| `E` | Factorial of TOS. |
 
 ### Stack operations
 
@@ -112,6 +113,7 @@ Flip has 2 stacks, but it also has an accumulator. The relevant operations are l
 |`e` | Modular indexing: push `stack[stack.pop() % len(stack)]`. |
 |`x` | Index of TOS in stack, or `-1` if not found. |
 |`u` | Push 1 if the stack contains TOS, 0 otherwise. |
+|`Q` | Push number of occurrences of TOS in stack. |
 
 ### Control flow
 |Instruction | Description |
