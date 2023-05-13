@@ -16,19 +16,21 @@ I'll first explain how rebounding works.
 
 * Otherwise, If it's rebounding while facing the left (e.g. when you're using `|` to reflect the IP), then it'll first reverse direction, then step forward 1 char.
 
-Another thing is that although the IP will bounce back if it goes across the right bound, execution will be terminated if the IP goes over the left bound. For example, the above program can be golfed to the following:
+Another thing is that execution will be terminated if the IP goes out of bound, so you will need to write explicit `|`'s to rebound the IP. For example, the above program can be golfed to the following:
 ```
-1+_2
+1+_2|
 ```
 
 Execution order:
 ```
-1    Initial IP position. 
-  _  End number: Push 1.
-     IP is about to step out of bounds, so we move forward 1 char & reverse direction.
-     (since IP is facing the right.)
-   2 Push 2.
- +   Add. (1 + 2)
+1     Initial IP position. 
+  _   End number: Push 1.
+
+    | Rebound: we move forward 1 char & reverse direction.
+      (since IP is facing the right.)
+
+   2  Push 2.
+ +    Add. (1 + 2)
 
      When IP goes over the left bound, execution is terminated, and [3] is printed.
 ```
