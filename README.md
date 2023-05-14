@@ -164,6 +164,7 @@ Flip has 2 stacks, but it also has 2 accumulators. The relevant operations are l
 |Instruction|Description|
 |:-:|:-:|
 |`o` | Print the entire stack as a `chr`'d string. |
+|`N` | Same as `o`, but without a trailing newline. |
 |`@`| Debug: Print the entire stack. |
 |`z`| Pop & print TOS as a number. |
 |`q`| Pop & print TOS as a character. |
