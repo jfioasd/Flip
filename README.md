@@ -101,7 +101,7 @@ Flip has 2 stacks, but it also has 2 accumulators. The relevant operations are l
 |:-:  |      :-: |
 | `d` | log10. |
 | `f` | Square root. |
-| `G` | Floor. |
+| `G` | Truncate to integer. |
 | `i` | Push whether TOS is a prime. |
 
 ### Stack operations
