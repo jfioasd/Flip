@@ -174,11 +174,6 @@ class Flip:
             elif c == "X": # Remove all occurrences of TOS in stack.
                 N = self.stack.pop()
                 self.stack = list(filter(lambda x: x != N, self.stack))
-            elif c == "W": # Uniquify the stack.
-                tmp = []
-                for i in self.stack:
-                    if i not in tmp: tmp.append(i)
-                self.stack = tmp
             elif c == "Y": # Repeat the stack N times.
                 N = self.stack.pop()
                 self.stack *= N
