@@ -23,7 +23,7 @@ class Flip:
         self.stack = self.stack[-num:]
 
     def rev_d(self): # Reverse IP direction
-        if self.ip % 2 == 0: # Even.
+        if self.ip_step > 0: # Facing right.
             self.ip -= 1
         else: # Odd.
             self.ip += 1
