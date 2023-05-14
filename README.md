@@ -133,6 +133,8 @@ Flip has 2 stacks, but it also has 2 accumulators. The relevant operations are l
 |`t` | Sort the stack. |
 |`J` | Generate inclusive range. Pops `L, R`, Pushes `range(L, R+1)` dumped onto the stack. |
 |`k` | Take: `stack = stack[-stack.pop():]`|
+|`l`| Uncut: Pops `N`: Moves last `N` items of other stack to this stack. |
+|`C`| Cut: Pops `N`: Keeps first `N` items of this stack, moves remaining items to other stack. |
 |`W`| Uniquify the stack. |
 |`Y` | Repeat each item of the stack TOS times. |
 |`T` | All: `stack = [all(stack)]`|
