@@ -1,6 +1,5 @@
 import sys
 import math
-import random
 
 class Flip:
     def __init__(self, prog):
@@ -161,8 +160,6 @@ class Flip:
                 self.stack = [self.stack[-1]] + self.stack[:-1]
             elif c == "t": # Sort the stack.
                 self.stack = sorted(self.stack)
-            elif c == "r": # Random choice.
-                self.stack = [random.choice(self.stack)]
             elif c == "J": # Generate inclusive range.
                 # (a b -- range(a, b+1))
                 R, L = self.stack.pop(), self.stack.pop()
