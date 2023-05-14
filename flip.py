@@ -118,6 +118,8 @@ class Flip:
                 self.stack.append(math.log10(self.stack.pop()))
             elif c == "f": # Square root.
                 self.stack.append(math.sqrt(self.stack.pop()))
+            elif c == "E": # Absolute value.
+                self.stack.append(abs(self.stack.pop()))
             elif c == "G": # Truncate to integer.
                 self.stack.append(int(self.stack.pop()))
 
