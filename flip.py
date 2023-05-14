@@ -119,8 +119,6 @@ class Flip:
                 self.stack.append(math.log10(self.stack.pop()))
             elif c == "f": # Square root.
                 self.stack.append(math.sqrt(self.stack.pop()))
-            elif c == "j": # 2**X.
-                self.stack.append(2 ** self.stack.pop())
 
             elif c == "D": # Dup.
                 self.stack.append(self.stack[-1])
