@@ -102,6 +102,7 @@ Flip has 2 stacks, but it also has 2 accumulators. The relevant operations are l
 | `d` | log10. |
 | `f` | Square root. |
 | `G` | Floor. |
+| `i` | Push whether TOS is a prime. |
 
 ### Stack operations
 
@@ -134,7 +135,6 @@ Flip has 2 stacks, but it also has 2 accumulators. The relevant operations are l
 |`J` | Generate inclusive range. Pops `L, R`, Pushes `range(L, R+1)` dumped onto the stack. |
 |`k` | Take: `stack = stack[-stack.pop():]`|
 |`Y` | Repeat the stack TOS times. |
-|`i` | Push whether TOS is a prime. |
 |`T` | All: `stack = [all(stack)]`|
 |`X` | Remove all occurrences of TOS from the stack. |
 |`e` | Modular indexing: push `stack[stack.pop() % len(stack)]`. |
