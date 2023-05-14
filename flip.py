@@ -121,10 +121,6 @@ class Flip:
                 self.stack.append(math.sqrt(self.stack.pop()))
             elif c == "j": # 2**X.
                 self.stack.append(2 ** self.stack.pop())
-            elif c == "G": # Abs.
-                self.stack.append(abs(self.stack.pop()))
-            elif c == "E": # Factorial.
-                self.stack.append(math.factorial(self.stack.pop()))
 
             elif c == "D": # Dup.
                 self.stack.append(self.stack[-1])
