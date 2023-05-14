@@ -79,8 +79,7 @@ Flip has 2 stacks, but it also has 2 accumulators. The relevant operations are l
 | `-`         | Subtract: `( a b -- a-b )` |
 | `*`         | Multiply: `( a b -- a*b )` |
 | `%`         | Modulo: `( a b -- a%b )` |
-| `/`         | Integer Division: `( a b -- a//b )` |
-| `\`        | Float division: `( a b -- a/b )` |
+| `/`         | Float Division: `( a b -- a/b )` |
 | `^`         | Exponentiation: `( a b -- a**b )` |
 | `~`         | Negate TOS. |
 | `]`         | Increment TOS. |
@@ -102,6 +101,7 @@ Flip has 2 stacks, but it also has 2 accumulators. The relevant operations are l
 |:-:  |      :-: |
 | `d` | log10. |
 | `f` | Square root. |
+| `G` | Floor. |
 
 ### Stack operations
 
