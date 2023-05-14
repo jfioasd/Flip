@@ -101,11 +101,9 @@ class Flip:
             elif c == "%": # Modulo.
                 RHS, LHS = self.stack.pop(), self.stack.pop()
                 self.stack.append(LHS % RHS)
-            elif c == "/": # Int Division.
+            elif c == "/": # Float Division.
                 RHS, LHS = self.stack.pop(), self.stack.pop()
-                self.stack.append(LHS // RHS)
-            elif c == "\\": # Float division.
-                RHS, LHS = self.stack.pop(), self.stack.pop()
+                self.stack.append(LHS / RHS)
                 self.stack.append(LHS / RHS)
             elif c == "^": # Exponentiation.
                 RHS, LHS = self.stack.pop(), self.stack.pop()
@@ -121,6 +119,8 @@ class Flip:
                 self.stack.append(math.log10(self.stack.pop()))
             elif c == "f": # Square root.
                 self.stack.append(math.sqrt(self.stack.pop()))
+            elif c == "G": # Floor.
+                self.stack.append(math.floor(self.stack.pop()))
 
             elif c == "D": # Dup.
                 self.stack.append(self.stack[-1])
