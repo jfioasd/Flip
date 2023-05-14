@@ -154,6 +154,7 @@ Flip has 2 stacks, but it also has 2 accumulators. The relevant operations are l
 | <code>`</code> | Binary apply the next command (single-byte). |
 | `{` | `IP -= 1`. (Does not affect IP's step.) |
 | `}` | If `stack.pop()` is truthy, `IP -= 1`. |
+| `S` | `IP += 1`. |
 |`&`| Decrement acc. If acc > 0, rebound. (downwards `repeat` loop) |
 |`b` | IP-relative jump: `IP += stack.pop()` |
 |`)` | Increment IP's step by 1. |
