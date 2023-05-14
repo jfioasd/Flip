@@ -266,6 +266,8 @@ class Flip:
             elif c == "}": # IP -= 1 if TOS is true.
                 if self.stack.pop():
                     self.ip -= 1
+            elif c == "S": # IP += 1.
+                self.ip += 1
 
             elif c == "o": # Print entire stack as chr string.
                 print("".join(map(chr,self.stack)))
