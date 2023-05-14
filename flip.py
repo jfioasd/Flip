@@ -265,6 +265,9 @@ class Flip:
             elif c == "o": # Print entire stack as chr string.
                 print("".join(map(chr,self.stack)))
                 self.printed = True
+            elif c == "N": # Same as `o`, but without a trailing newline.
+                print(end = "".join(map(chr,self.stack)))
+                self.printed = True
             elif c == "z": # Pop, and print TOS as a number.
                 print(self.stack.pop())
                 self.printed = True
