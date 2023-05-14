@@ -219,6 +219,15 @@ class Flip:
             elif c == "c": # Logical and.
                 RHS, LHS = self.stack.pop(), self.stack.pop()
                 self.stack.append(int(LHS and RHS))
+            elif c == "I": # Bitwise and.
+                RHS, LHS = self.stack.pop(), self.stack.pop()
+                self.stack.append(LHS & RHS)
+            elif c == "p": # Bitwise or.
+                RHS, LHS = self.stack.pop(), self.stack.pop()
+                self.stack.append(LHS | RHS)
+            elif c == "P": # Bitwise xor.
+                RHS, LHS = self.stack.pop(), self.stack.pop()
+                self.stack.append(LHS ^ RHS)
             elif c == "B": # Logical or.
                 RHS, LHS = self.stack.pop(), self.stack.pop()
                 self.stack.append(int(LHS or RHS))
