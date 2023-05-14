@@ -94,6 +94,9 @@ Flip has 2 stacks, but it also has 2 accumulators. The relevant operations are l
 |`!` | Logical not. |
 |`c`| Logical and. |
 |`B`| Logical or. |
+|`I`| Bitwise and. |
+|`p`| Bitwise or. |
+|`P`| Bitwise xor. |
 
 | Instruction | Description |
 |:-:  |      :-: |
