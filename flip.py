@@ -179,9 +179,13 @@ class Flip:
                 for i in self.stack:
                     if i not in tmp: tmp.append(i)
                 self.stack = tmp
-            elif c == "Y": # Repeat the stack N times.
+            elif c == "Y": # Repeat each item of the stack N times.
                 N = self.stack.pop()
-                self.stack *= N
+                tmp = []
+                for i in self.stack:
+                    for j in range(N):
+                        tmp.append(i)
+                self.stack = tmp"
             elif c == "i": # Push whether TOS is a prime.
                 self.stack.append(self.is_prime(self.stack.pop()))
             elif c == "T": # Push whether all items in the stack is truthy.
