@@ -47,11 +47,13 @@ You can `{` for stepping IP left 1, and `}` for stepping IP left 1 if TOS is tru
 You can also `b` to do an IP-relative jump (`IP += stack.pop()`)
 
 ## Data structures
-Flip has 2 stacks, but it also has an accumulator. The relevant operations are listed below:
+Flip has 2 stacks, but it also has 2 accumulators. The relevant operations are listed below:
 
 * `L`: Exchange this stack with the other stack.
 * `a`: Push the accumulator to the stack (initially `16`)
 * `A`: Pop TOS to the accumulator
+* `h`: Push other accumulator to stack (initially `-1`)
+* `H`: Pop TOs to other accumulator
 
 ## Instruction reference
 ### Constants
@@ -103,6 +105,8 @@ Flip has 2 stacks, but it also has an accumulator. The relevant operations are l
 |`;` | drop. `(... x -- ... )`|
 | `a` | Push the accumulator onto the stack. |
 | `A` | Pop TOS to accumulator. |
+| `h` | Push other accumulator to stack. |
+| `H` | Pop TOS to other accumulator. |
 | `L` | Exchange this stack w/ the other stack. |
 | `,` | Copy the TOS of the other stack to this stack. |
 | `.` | Pop TOS of this stack to other stack. |
