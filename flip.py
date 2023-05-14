@@ -160,6 +160,8 @@ class Flip:
                 self.stack = self.stack[::-1]
             elif c == "y": # Put TOS to the bottom of the stack.
                 self.stack = [self.stack[-1]] + self.stack[:-1]
+            elif c == "m": # Put bottom of the stack to TOS.
+                self.stack = self.stack[1:] + [self.stack[0]]
             elif c == "t": # Sort the stack.
                 self.stack = sorted(self.stack)
             elif c == "J": # Generate inclusive range.
