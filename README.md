@@ -106,6 +106,8 @@ Flip has 2 stacks, but it also has an accumulator. The relevant operations are l
 | `L` | Exchange this stack w/ the other stack. |
 | `,` | Copy the TOS of the other stack to this stack. |
 | `.` | Pop TOS of this stack to other stack. |
+| `U` | Pop the TOS of the other stack to this stack. |
+| `n` | Copy the TOS of this stack to other stack. |
 ### Stack arithmetic
 
 | Instruction | Description |
