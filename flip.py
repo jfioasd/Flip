@@ -128,6 +128,10 @@ class Flip:
                 self.stack, self.other = self.other, self.stack
             elif c == ",": # Copy other[-1] to stack.
                 self.stack.append(self.other[-1])
+            elif c == "U": # Pop other stack to this stack.
+                self.stack.append(self.other.pop())
+            elif c == "n": # Copy this stack to other stack.
+                self.other.append(self.stack[-1])
             elif c == ".": # Pop stack to other.
                 self.other.append(self.stack.pop())
 
