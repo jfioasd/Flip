@@ -33,6 +33,13 @@ class Flip:
 
         self.ip_step = - self.ip_step
 
+    def is_prime(self, num):
+        if num == 1: return 0
+        for i in range(2, int(math.sqrt(num))+1):
+            if num % i == 0:
+                return 0
+        return 1
+
     def run(self):
         if self.ip < 0:
             self.done = True
@@ -178,6 +185,8 @@ class Flip:
             elif c == "Y": # Repeat the stack N times.
                 N = self.stack.pop()
                 self.stack *= N
+            elif c == "i": # Push whether TOS is a prime.
+                self.stack.append(self.is_prime(self.stack.pop()))
             elif c == "T": # Push whether all items in the stack is truthy.
                 self.stack = [int(all(self.stack))]
             elif c == "e": # Push stack[N]. (Modular)
