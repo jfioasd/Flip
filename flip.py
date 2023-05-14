@@ -88,6 +88,8 @@ class Flip:
                 # We don't want to do the trailing TMP push right now
             elif c.isdigit(): # Numbers.
                 self.stack.append(int(c))
+            elif c == "j": # 10.
+                self.stack.append(10)
 
             elif c == "+": # Addition.
                 self.stack.append(self.stack.pop() + self.stack.pop())
@@ -219,9 +221,6 @@ class Flip:
             elif c == "p": # Bitwise or.
                 RHS, LHS = self.stack.pop(), self.stack.pop()
                 self.stack.append(LHS | RHS)
-            elif c == "P": # Bitwise xor.
-                RHS, LHS = self.stack.pop(), self.stack.pop()
-                self.stack.append(LHS ^ RHS)
             elif c == "B": # Logical or.
                 RHS, LHS = self.stack.pop(), self.stack.pop()
                 self.stack.append(int(LHS or RHS))
