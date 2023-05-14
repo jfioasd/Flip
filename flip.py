@@ -16,9 +16,11 @@ class Flip:
         self.in_str = False
         self.skip_next = False
         self.next_char = False
+        self.in_bi = False
 
         self.acc = 16
         self.other_acc = -1
+        self.TMP = 0
 
     def keep(self, num):
         self.stack = self.stack[-num:]
@@ -71,6 +73,12 @@ class Flip:
                 self.in_str = True
             elif c == "'": # Single char string.
                 self.next_char = True
+            elif c == "`": # bi.
+                self.TMP = self.stack[-1]
+                self.in_bi = True
+                self.ip += self.ip_step
+                return
+                # We don't want to do the trailing TMP push right now
             elif c.isdigit(): # Numbers.
                 self.stack.append(int(c))
 
@@ -270,6 +278,11 @@ class Flip:
                 # Pops the top of stack.
                 if not self.stack.pop():
                     self.skip_next = True
+
+            ## Do a trailing re-push for bi.
+            if self.in_bi:
+                self.stack.append(self.TMP)
+                self.in_bi = False
 
             self.ip += self.ip_step
 
