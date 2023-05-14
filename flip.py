@@ -18,6 +18,7 @@ class Flip:
         self.next_char = False
 
         self.acc = 16
+        self.other_acc = -1
 
     def keep(self, num):
         self.stack = self.stack[-num:]
@@ -123,6 +124,10 @@ class Flip:
                 self.acc = self.stack.pop()
             elif c == "a": # Push accumulator to the stack.
                 self.stack.append(self.acc)
+            elif c == "H": # Pop to other accumulator.
+                self.other_acc = self.stack.pop()
+            elif c == "h": # Push other accumulator to the stack.
+                self.stack.append(self.other_acc)
 
             elif c == "L": # swap the two stacks.
                 self.stack, self.other = self.other, self.stack
@@ -167,7 +172,6 @@ class Flip:
                 self.stack *= N
             elif c == "T": # Push whether all items in the stack is truthy.
                 self.stack = [int(all(self.stack))]
-
             elif c == "e": # Push stack[N]. (Modular)
                 N = self.stack.pop()
                 self.stack.append(self.stack[N % len(self.stack)])
