@@ -135,7 +135,7 @@ Flip has 2 stacks, but it also has 2 accumulators. The relevant operations are l
 |`J` | Generate inclusive range. Pops `L, R`, Pushes `range(L, R+1)` dumped onto the stack. |
 |`k` | Take: `stack = stack[-stack.pop():]`|
 |`W`| Uniquify the stack. |
-|`Y` | Repeat the stack TOS times. |
+|`Y` | Repeat each item of the stack TOS times. |
 |`T` | All: `stack = [all(stack)]`|
 |`X` | Remove all occurrences of TOS from the stack. |
 |`e` | Modular indexing: push `stack[stack.pop() % len(stack)]`. |
