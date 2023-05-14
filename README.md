@@ -131,8 +131,7 @@ Flip has 2 stacks, but it also has 2 accumulators. The relevant operations are l
 |`R` | Reverse the stack. |
 |`y` | Shift TOS to the bottom of the stack. |
 | `m` | Shift bottom of stack to TOS. |
-|`t` | sort the stack. |
-|`W` | Uniquify the stack. |
+|`t` | Sort the stack. |
 |`J` | Generate inclusive range. Pops `L, R`, Pushes `range(L, R+1)` dumped onto the stack. |
 |`k` | Take: `stack = stack[-stack.pop():]`|
 |`Y` | Repeat the stack TOS times. |
