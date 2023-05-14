@@ -157,6 +157,11 @@ class Flip:
             elif c == "X": # Remove all occurrences of TOS in stack.
                 N = self.stack.pop()
                 self.stack = list(filter(lambda x: x != N, self.stack))
+            elif c == "W": # Uniquify the stack.
+                tmp = []
+                for i in self.stack:
+                    if i not in tmp: tmp.append(i)
+                self.stack = tmp
             elif c == "Y": # Repeat the stack N times.
                 N = self.stack.pop()
                 self.stack *= N
@@ -211,7 +216,7 @@ class Flip:
                 if self.stack[-1]:
                     self.rev_d()
                     return
-                # Otherwise, increment by step as normal.
+                # Like above
             elif c == "&": # "Times" loop (using acc as counter).
                 self.acc -= 1
                 if self.acc > 0:
