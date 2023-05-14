@@ -102,7 +102,6 @@ Flip has 2 stacks, but it also has 2 accumulators. The relevant operations are l
 |:-:  |      :-: |
 | `d` | log10. |
 | `f` | Square root. |
-| `j` | 2 ** X |
 
 ### Stack operations
 
