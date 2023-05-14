@@ -169,6 +169,14 @@ class Flip:
                     self.stack.append(i)
             elif c == "k": # Take: (stack[-num:]).
                 self.keep(self.stack.pop())
+            elif c == "l": # Append last n items of other stack to this stack.
+                N = self.stack.pop()
+                self.stack += self.other[-N:]
+                self.other = self.other[:-N]
+            elif c == "C": # Cut.
+                N = self.stack.pop()
+                self.other = self.stack[N:]
+                self.stack = self.stack[:N]
             elif c == "X": # Remove all occurrences of TOS in stack.
                 N = self.stack.pop()
                 self.stack = list(filter(lambda x: x != N, self.stack))
@@ -183,7 +191,7 @@ class Flip:
                 for i in self.stack:
                     for j in range(N):
                         tmp.append(i)
-                self.stack = tmp"
+                self.stack = tmp
             elif c == "i": # Push whether TOS is a prime.
                 self.stack.append(self.is_prime(self.stack.pop()))
             elif c == "T": # Push whether all items in the stack is truthy.
