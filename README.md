@@ -130,6 +130,7 @@ Flip has 2 stacks, but it also has 2 accumulators. The relevant operations are l
 | `w` | Push the length of the stack. |
 |`R` | Reverse the stack. |
 |`y` | Shift TOS to the bottom of the stack. |
+| `m` | Shift bottom of stack to TOS. |
 |`t` | sort the stack. |
 |`W` | Uniquify the stack. |
 |`J` | Generate inclusive range. Pops `L, R`, Pushes `range(L, R+1)` dumped onto the stack. |
