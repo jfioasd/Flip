@@ -143,6 +143,11 @@ class Flip:
                 self.stack = sorted(self.stack)
             elif c == "r": # Random choice.
                 self.stack = [random.choice(self.stack)]
+            elif c == "J": # Generate inclusive range.
+                # (a b -- range(a, b+1))
+                R, L = self.stack.pop(), self.stack.pop()
+                for i in range(L, R+1):
+                    self.stack.append(i)
             elif c == "k": # Take: (stack[-num:]).
                 self.keep(self.stack.pop())
             elif c == "X": # Remove all occurrences of TOS in stack.
