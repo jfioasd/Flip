@@ -176,6 +176,9 @@ class Flip:
                 self.stack.append(int(self.stack.pop() > self.stack.pop()))
             elif c == ">": # Greater than.
                 self.stack.append(int(self.stack.pop() < self.stack.pop()))
+            elif c == "F": # Within Range (inclusive): (a b c -- b <= a <= c)
+                R, L, N = self.stack.pop(), self.stack.pop(), self.stack.pop()
+                self.stack.append(int(L <= N <= R))
             elif c == "!": # Logical not.
                 self.stack.append(int(not self.stack.pop()))
             elif c == "c": # Logical and.
