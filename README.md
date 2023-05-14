@@ -12,9 +12,9 @@ Before the terminate `#` instruction, only `1`, `_`, `2`, `+` are executed. (Num
 
 I'll first explain how rebounding works.
 
-* If the IP is initially facing the right, then it'll step forward 1 char and reverse direction.
+* If the IP pointing to an even position, it moves left 1 position. If it's pointing to an odd position, it moves right 1 position.
 
-* Otherwise, if it's rebounding while facing the left, then it'll first reverse direction, then step forward 1 char.
+* Then, the IP reverses direction, and steps to the next instruction using the current IP step.
 
 Another thing is that execution will be terminated if the IP goes out of bound, so you will need to write explicit `|`'s to rebound the IP. For example, the above program can be golfed to the following:
 ```
