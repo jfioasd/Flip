@@ -189,8 +189,14 @@ class Flip:
                 self.rev_d()
                 return     # Don't auto-increment ptr at the end.
             elif c == ":": # Reverse direction if TOS is nonzero.
-                # Pops TOS, since that's more useful.
+                # Pops TOS.
                 if self.stack.pop():
+                    self.rev_d()
+                    return
+                # Otherwise, increment by step as normal.
+            elif c == "$": # Reverse direction if TOS is nonzero.
+                # Does not pop TOS.
+                if self.stack[-1]:
                     self.rev_d()
                     return
                 # Otherwise, increment by step as normal.
