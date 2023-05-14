@@ -46,6 +46,8 @@ You can `{` for stepping IP left 1, and `}` for stepping IP left 1 if TOS is tru
 
 You can also `b` to do an IP-relative jump (`IP += stack.pop()`)
 
+---
+
 P. S. There is also a binary apply <code>`</code> inspired by Factor. Syntax is like follows:
 ```
 ` command1 command2
