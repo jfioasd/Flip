@@ -118,8 +118,8 @@ class Flip:
                 self.stack.append(math.log10(self.stack.pop()))
             elif c == "f": # Square root.
                 self.stack.append(math.sqrt(self.stack.pop()))
-            elif c == "G": # Floor.
-                self.stack.append(math.floor(self.stack.pop()))
+            elif c == "G": # Truncate to integer.
+                self.stack.append(int(self.stack.pop()))
 
             elif c == "D": # Dup.
                 self.stack.append(self.stack[-1])
@@ -279,7 +279,7 @@ class Flip:
                     self.stack.append(ord(x))
             elif c == "V": # Read a single integer from input (newline-terminated).
                 x = input()
-                self.stack.append(int(x))
+                self.stack.append(eval(x))
             elif c == "@": # Debug: Output stack as an array.
                 print(self.stack)
 
