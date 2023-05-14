@@ -12,7 +12,7 @@ Before the terminate `#` instruction, only `1`, `_`, `2`, `+` are executed. (Num
 
 I'll first explain how rebounding works.
 
-* If the IP pointing to an even position, it moves left 1 position. If it's pointing to an odd position, it moves right 1 position.
+* If the IP facing left, it moves left 1 position. If it's facing right, it moves right 1 position.
 
 * Then, the IP reverses direction, and steps to the next instruction using the current IP step.
 
