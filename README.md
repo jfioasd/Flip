@@ -72,14 +72,6 @@ You can `{` for stepping IP left 1, and `}` for stepping IP right 1. `S` steps I
 
 You can also `b` to do an IP-relative jump (`IP += stack.pop()`)
 
----
-
-P. S. There is also a binary apply <code>`</code> inspired by Factor. Syntax is like follows:
-```
-` command1 command2
-```
-Where `command1` and `command2` are both 1-byte commands. Execution: The current TOS is first saved to a temporary variable (non-popping), then `command1` is executed, then the temporary variable is retrieved, then `command2` is executed on the retrieved variable.
-
 ## Data structures
 Flip has a stack and 2 accumulators. The relevant operations are listed below:
 
@@ -121,6 +113,7 @@ Flip has a stack and 2 accumulators. The relevant operations are listed below:
 |`B`| Logical or. |
 |`I`| Bitwise and. |
 |`p`| Bitwise or. |
+|`r`| Bitwise xor. |
 
 | Instruction | Description |
 |:-:  |      :-: |
@@ -168,7 +161,6 @@ Flip has a stack and 2 accumulators. The relevant operations are listed below:
 |`\|` | Mirror the IP. |
 |`:` | mirror if tos is nonzero (pops tos). |
 |`$`| Mirror if TOS is nonzero (does not pop TOS.) |
-| <code>`</code> | Binary apply the next command (single-byte). |
 | `{` | `IP -= 1`. (Does not affect IP's step.) |
 | `}` | `IP += 1`. |
 | `S` | If `stack.pop()` is truthy, `IP -= 1`. |
