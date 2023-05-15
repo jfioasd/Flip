@@ -169,8 +169,8 @@ Flip has a stack and 2 accumulators. The relevant operations are listed below:
 |`)` | Increment IP's step by 1. |
 |`(` | Decrement IP's step by 1. |
 |`#` | End the program.|
-|`K` | Skip the next command scanned by the IP. |
-|`?`| Pop TOS; Skip next command if TOS is 0. |
+|`K` | Pop `N`; Skip next `N` commands scanned by the IP. |
+|`?`| Pop `cond, N`; Skip next `N` commands if `cond` is 0. |
 
 ### I/O
 |Instruction|Description|
