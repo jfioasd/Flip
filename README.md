@@ -10,7 +10,7 @@ This can be seen from the following example:
 
 Before the terminate `#` instruction, only `1`, `2`, `+`, `z` are executed, so this will output `3`.
 
-After halting, if nothing is outputted, the entire stack is converted to a character string before outputting, so nothing additional is outputted.
+After halting, if nothing is outputted, the entire stack is `chr`'d before outputting as a single string, so nothing additional is outputted.
 
 ---
 
