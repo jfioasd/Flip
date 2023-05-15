@@ -12,19 +12,11 @@ Before the terminate `#` instruction, only `1`, `2`, `+`, `z` are executed, so t
 
 ---
 
-I'll first explain how `|` works.
-
-* If the IP facing left, it moves left 1 position. If it's facing right, it moves right 1 position.
-
-* Then, the IP reverses direction, and steps to the next instruction using the current IP step.
-
----
-
 Another thing is that execution will be terminated if the IP goes out of the left bound, but the IP will wrap backwards for the right bound.
 
-Wrapping is done like this: whenever the IP points to an index greater than the program length during program execution, the IP is set to `len(prog) - (ip - len(prog)) - 1`.
+Wrapping is done like this: whenever the IP points to an index greater than the program length during program execution, we use whatever amount IP goes over the end of the program as a backwards index to the next character scanned by IP.
 
-This can be visualized like this (suppose our program is 5 chars):
+This can be visualized as follows (suppose our program is 5 chars):
 ```
 abcde
 
@@ -63,8 +55,7 @@ Execution order:
 1     Push 1
   2   Push 2.
 
-      Rebound. When IP goes over the right bound,
-      it starts to execute the odd-indexed characters backwards.
+      Rebound.
 
    +  Add.
  z    Print TOS as a number.
@@ -74,12 +65,20 @@ Execution order:
 
 ---
 
-If you want to add the behavior of rebounding to your code, you have 4 options:
+Another thing is IP mirror commands.
 
-* `|`: Directly rebound the IP, like I've described above.
-* `:`: Only rebound if TOS is nonzero (pops TOS).
-* `$`: Rebound if TOS is nonzero (does not pop TOS).
-* `&`: A kind of `repeat` loop: Decrement the accumulator, and rebound if `acc > 0`.
+I'll first explain how mirroring works.
+
+* If the IP facing left, it moves left 1 position. If it's facing right, it moves right 1 position.
+
+* Then, the IP reverses direction, and steps to the next instruction using the current IP step.
+
+If you want to add the behavior of mirroring to your code, you have 4 options:
+
+* `|`: Directly mirror the IP, like I've described above.
+* `:`: Only mirror if TOS is nonzero (pops TOS).
+* `$`: Mirror if TOS is nonzero (does not pop TOS).
+* `&`: A kind of `repeat` loop: Decrement the accumulator, and mirror if `acc > 0`.
 
 Like Backhand, you can `)` to increment the step of the IP, and `(` to decrement the step of the IP.
 
@@ -188,14 +187,14 @@ Flip has 2 stacks, but it also has 2 accumulators. The relevant operations are l
 ### Control flow
 |Instruction | Description |
 |:-:| :-:|
-|`\|` | Rebound the IP. |
-|`:` | rebound if tos is nonzero (pops tos). |
-|`$`| Rebound if TOS is nonzero (does not pop TOS.) |
+|`\|` | Mirror the IP. |
+|`:` | mirror if tos is nonzero (pops tos). |
+|`$`| Mirror if TOS is nonzero (does not pop TOS.) |
 | <code>`</code> | Binary apply the next command (single-byte). |
 | `{` | `IP -= 1`. (Does not affect IP's step.) |
 | `}` | If `stack.pop()` is truthy, `IP -= 1`. |
 | `S` | `IP += 1`. |
-|`&`| Decrement acc. If acc > 0, rebound. (downwards `repeat` loop) |
+|`&`| Decrement acc. If acc > 0, mirror. (downwards `repeat` loop) |
 |`b` | IP-relative jump: `IP += stack.pop()` |
 |`)` | Increment IP's step by 1. |
 |`(` | Decrement IP's step by 1. |
