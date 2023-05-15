@@ -12,11 +12,11 @@ Before the terminate `#` instruction, only `1`, `2`, `+`, `z` are executed, so t
 
 After halting, if nothing is outputted, the entire stack is `chr`'d before outputting as a single string, so nothing additional is outputted.
 
----
+## IP wrapping
 
 Another thing is that execution will be terminated if the IP goes out of the left bound, but the IP will wrap backwards for the right bound.
 
-How wrapping is done: whenever the IP points to an index greater than the program length during program execution, we use whatever amount IP goes over the end of the program as a backwards index to the next character scanned by IP.
+Wrapping: Whenever IP points to a position after the end of program, the amount that IP goes over the last character is used as a backwards index to the next character scanned by IP.
 
 This can be visualized as follows (suppose our program is 5 chars):
 ```
@@ -47,9 +47,9 @@ a    Bump IP like normal.
       Execution is terminated since IP goes out of bounds.
 ```
 
----
+## IP mirroring commands
 
-Another thing is IP mirroring commands.
+Another thing I'd like to describe is the IP mirroring commands.
 
 I'll first explain how mirroring works.
 
@@ -64,13 +64,15 @@ If you want to add the behavior of mirroring to your code, you have 4 options:
 * `$`: Mirror if TOS is nonzero (does not pop TOS).
 * `&`: A kind of `repeat` loop: Decrement the accumulator, and mirror if `acc > 0`.
 
+## Stuff from Backhand
+
 Like Backhand, you can `)` to increment the step of the IP, and `(` to decrement the step of the IP.
 
 You can `{` for stepping IP left 1, and `}` for stepping IP right 1. `S` steps IP left 1 if TOS is truthy (popping).
 
 You can also `b` to do an IP-relative jump (`IP += stack.pop()`)
 
----
+## Binary apply
 
 P. S. There is also a binary apply <code>`</code> inspired by Factor. Syntax is like follows:
 ```
