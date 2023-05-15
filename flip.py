@@ -12,7 +12,7 @@ class Flip:
         self.done = False
         self.printed = False
         self.in_str = False
-        self.skip_next = False
+        self.skip_n = 0
         self.next_char = False
 
         self.acc = 16
@@ -50,9 +50,8 @@ class Flip:
             self.right_rebound()
             return
         else:
-            if self.skip_next: # Do the IP bumping in advance
-                self.skip_next = False
-                self.prev_char = self.prog[self.ip]
+            if self.skip_n > 0: # Do the IP bumping in advance
+                self.skip_n -= 1
                 self.ip += self.ip_step
                 return
 
@@ -278,12 +277,13 @@ class Flip:
 
             elif c == "#": # End the prog.
                 self.done = True
-            elif c == "K": # Skip the next char.
-                self.skip_next = True
+            elif c == "K": # Skip the next n chars.
+                self.skip_n = self.stack.pop()
             elif c == "?": # If TOS is zero, skip the next char.
                 # Pops the top of stack.
-                if not self.stack.pop():
-                    self.skip_next = True
+                cond, N = self.stack.pop(), self.stack.pop()
+                if not cond:
+                    self.skip_n = N
 
             self.ip += self.ip_step
 
