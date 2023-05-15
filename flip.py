@@ -27,9 +27,13 @@ class Flip:
     def rev_d(self): # Reverse IP direction
         if self.ip_step > 0: # Facing right.
             self.ip -= 1
-        else: # Odd.
+        else: # Facing left.
             self.ip += 1
 
+        self.ip_step = - self.ip_step
+
+    def right_rebound(self): # Rebound from right out-of-bound.
+        self.ip = len(self.prog) - (self.ip - len(self.prog)) - 1
         self.ip_step = - self.ip_step
 
     def is_prime(self, num):
@@ -45,8 +49,8 @@ class Flip:
             return
 
         if self.ip >= len(self.prog):
-            # Implicit `|` is also not as useful.
-            self.done = True
+            # Implicit `|` on right bound.
+            self.right_rebound()
             return
         else:
             if self.skip_next: # Do the IP bumping in advance
