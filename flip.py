@@ -281,7 +281,7 @@ class Flip:
                 self.skip_n = self.stack.pop()
             elif c == "?": # If TOS is zero, skip the next char.
                 # Pops the top of stack.
-                cond, N = self.stack.pop(), self.stack.pop()
+                N, cond = self.stack.pop(), self.stack.pop()
                 if not cond:
                     self.skip_n = N
 
