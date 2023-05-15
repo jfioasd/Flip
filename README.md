@@ -8,7 +8,9 @@ This can be seen from the following example:
 1 2 + z #
 ```
 
-Before the terminate `#` instruction, only `1`, `2`, `+`, `z` are executed, so this will output `3`. After halting, if nothing is outputted, the entire stack is implicitly outputted, so nothing additional is outputted.
+Before the terminate `#` instruction, only `1`, `2`, `+`, `z` are executed, so this will output `3`.
+
+After halting, if nothing is outputted, the entire stack converted to a character string is outputted, so nothing additional is outputted.
 
 ---
 
