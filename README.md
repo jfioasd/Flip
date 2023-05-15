@@ -14,7 +14,7 @@ Before the terminate `#` instruction, only `1`, `2`, `+`, `z` are executed, so t
 
 Another thing is that execution will be terminated if the IP goes out of the left bound, but the IP will wrap backwards for the right bound.
 
-Wrapping is done like this: whenever the IP points to an index greater than the program length during program execution, we use whatever amount IP goes over the end of the program as a backwards index to the next character scanned by IP.
+How wrapping is done: whenever the IP points to an index greater than the program length during program execution, we use whatever amount IP goes over the end of the program as a backwards index to the next character scanned by IP.
 
 This can be visualized as follows (suppose our program is 5 chars):
 ```
