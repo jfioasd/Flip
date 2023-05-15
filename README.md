@@ -10,17 +10,50 @@ This can be seen from the following example:
 
 Before the terminate `#` instruction, only `1`, `2`, `+`, `z` are executed, so this will output `3`. After halting, if nothing is outputted, the entire stack is implicitly outputted, so nothing additional is outputted.
 
+---
+
 I'll first explain how `|` works.
 
 * If the IP facing left, it moves left 1 position. If it's facing right, it moves right 1 position.
 
 * Then, the IP reverses direction, and steps to the next instruction using the current IP step.
 
+---
+
 Another thing is that execution will be terminated if the IP goes out of the left bound, but the IP will wrap backwards for the right bound.
 
 Wrapping is done like this: whenever the IP points to an index greater than the program length during program execution, the IP is set to `len(prog) - (ip - len(prog)) - 1`.
 
-For example, the above program can be golfed to the following:
+This can be visualized like this (suppose our program is 5 chars):
+```
+abcde
+
+a
+  c
+    e
+      _ Our IP goes 2 characters out of bounds,
+        so we flip whatever amount IP goes over the end of the program
+        back as an index into the progam.
+        i.e.:
+   <<   (Now we're pointing to d)
+   d
+ b
+        Execution goes over the left bound, so program is terminated.
+```
+
+Suppose our program is 4 chars:
+```
+abcd
+a    Bump IP like normal.
+  c
+    _ IP goes 1 char out of bounds, so use that as a backwards index:
+   <  (Now IP is pointing to `d`)
+   d
+ b
+      Execution is terminated since IP goes out of bounds.
+```
+
+For another example, the program at the beginning of the description can be golfed to the following:
 ```
 1z2+
 ```
@@ -39,10 +72,13 @@ Execution order:
      When IP goes over the left bound, execution is terminated, and 3 is printed.
 ```
 
-If you want to add the behavior of rebounding to your code, you have 3 options:
+---
+
+If you want to add the behavior of rebounding to your code, you have 4 options:
 
 * `|`: Directly rebound the IP, like I've described above.
 * `:`: Only rebound if TOS is nonzero (pops TOS).
+* `$`: Rebound if TOS is nonzero (does not pop TOS).
 * `&`: A kind of `repeat` loop: Decrement the accumulator, and rebound if `acc > 0`.
 
 Like Backhand, you can `)` to increment the step of the IP, and `(` to decrement the step of the IP.
