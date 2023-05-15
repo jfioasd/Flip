@@ -182,3 +182,4 @@ Flip has a stack and 2 accumulators. The relevant operations are listed below:
 |`q`| Pop & print TOS as a character. |
 |`g` | Read a single character from the input. Or `0` on EOF. |
 |`V` | Read a single newline-terminated integer from the input. |
+|`_` | Read a line from the input, and push all the character codes onto the stack. |
