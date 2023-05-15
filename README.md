@@ -65,7 +65,7 @@ Execution order:
 
 ---
 
-Another thing is IP mirror commands.
+Another thing is IP mirroring commands.
 
 I'll first explain how mirroring works.
 
