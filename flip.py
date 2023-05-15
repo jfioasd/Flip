@@ -305,7 +305,4 @@ if __name__ == "__main__":
         x.run()
 
     if not x.printed:
-        # For now, output stack as an array.
-        # I'll change that to chr & join output
-        # when most of the coding is done.
-        print(x.stack)
+        print("".join(map(chr,x.stack)))
