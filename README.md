@@ -77,9 +77,8 @@ P. S. There is also a binary apply <code>`</code> inspired by Factor. Syntax is 
 Where `command1` and `command2` are both 1-byte commands. Execution: The current TOS is first saved to a temporary variable (non-popping), then `command1` is executed, then the temporary variable is retrieved, then `command2` is executed on the retrieved variable.
 
 ## Data structures
-Flip has 2 stacks, but it also has 2 accumulators. The relevant operations are listed below:
+Flip has a stack and 2 accumulators. The relevant operations are listed below:
 
-* `L`: Exchange this stack with the other stack.
 * `a`: Push the accumulator to the stack (initially `16`)
 * `A`: Pop TOS to the accumulator
 * `h`: Push other accumulator to stack (initially `-1`)
@@ -139,11 +138,6 @@ Flip has 2 stacks, but it also has 2 accumulators. The relevant operations are l
 | `A` | Pop TOS to accumulator. |
 | `h` | Push other accumulator to stack. |
 | `H` | Pop TOS to other accumulator. |
-| `L` | Exchange this stack w/ the other stack. |
-| `,` | Copy the TOS of the other stack to this stack. |
-| `.` | Pop TOS of this stack to other stack. |
-| `U` | Pop the TOS of the other stack to this stack. |
-| `n` | Copy the TOS of this stack to other stack. |
 ### Stack arithmetic
 
 | Instruction | Description |
@@ -155,8 +149,6 @@ Flip has 2 stacks, but it also has 2 accumulators. The relevant operations are l
 |`t` | Sort the stack. |
 |`J` | Generate inclusive range. Pops `L, R`, Pushes `range(L, R+1)` dumped onto the stack. |
 |`k` | Take: `stack = stack[-stack.pop():]`|
-|`l`| Uncut: Pops `N`: Moves last `N` items of other stack to this stack. |
-|`C`| Cut: Pops `N`: Keeps first `N` items of this stack, moves remaining items to other stack. |
 |`W`| Uniquify the stack. |
 |`Y` | Repeat each item of the stack TOS times. |
 |`T` | All: `stack = [all(stack)]`|
