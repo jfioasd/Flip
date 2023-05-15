@@ -45,24 +45,6 @@ a    Bump IP like normal.
       Execution is terminated since IP goes out of bounds.
 ```
 
-For another example, the program at the beginning of the description can be golfed to the following:
-```
-1z2+
-```
-
-Execution order:
-```
-1     Push 1
-  2   Push 2.
-
-      Rebound.
-
-   +  Add.
- z    Print TOS as a number.
-
-     When IP goes over the left bound, execution is terminated, and 3 is printed.
-```
-
 ---
 
 Another thing is IP mirroring commands.
