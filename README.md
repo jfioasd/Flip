@@ -64,7 +64,7 @@ If you want to add the behavior of mirroring to your code, you have 4 options:
 
 Like Backhand, you can `)` to increment the step of the IP, and `(` to decrement the step of the IP.
 
-You can `{` for stepping IP left 1, and `}` for stepping IP left 1 if TOS is truthy.
+You can `{` for stepping IP left 1, and `}` for stepping IP right 1. `S` steps IP left 1 if TOS is truthy (popping).
 
 You can also `b` to do an IP-relative jump (`IP += stack.pop()`)
 
@@ -166,8 +166,8 @@ Flip has a stack and 2 accumulators. The relevant operations are listed below:
 |`$`| Mirror if TOS is nonzero (does not pop TOS.) |
 | <code>`</code> | Binary apply the next command (single-byte). |
 | `{` | `IP -= 1`. (Does not affect IP's step.) |
-| `}` | If `stack.pop()` is truthy, `IP -= 1`. |
-| `S` | `IP += 1`. |
+| `}` | `IP += 1`. |
+| `S` | If `stack.pop()` is truthy, `IP -= 1`. |
 |`&`| Decrement acc. If acc > 0, mirror. (downwards `repeat` loop) |
 |`b` | IP-relative jump: `IP += stack.pop()` |
 |`)` | Increment IP's step by 1. |
