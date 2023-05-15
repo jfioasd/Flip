@@ -10,15 +10,19 @@ This can be seen from the following example:
 
 Before the terminate `#` instruction, only `1`, `2`, `+`, `z` are executed, so this will output `3`. After halting, if nothing is outputted, the entire stack is implicitly outputted, so nothing additional is outputted.
 
-I'll first explain how rebounding works.
+I'll first explain how `|` works.
 
 * If the IP facing left, it moves left 1 position. If it's facing right, it moves right 1 position.
 
 * Then, the IP reverses direction, and steps to the next instruction using the current IP step.
 
-Another thing is that execution will be terminated if the IP goes out of bound, so you will need to write explicit `|`'s to rebound the IP. For example, the above program can be golfed to the following:
+Another thing is that execution will be terminated if the IP goes out of the left bound, but the IP will wrap backwards for the right bound.
+
+Wrapping is done like this: whenever the IP points to an index greater than the program length during program execution, the IP is set to `len(prog) - (ip - len(prog)) - 1`.
+
+For example, the above program can be golfed to the following:
 ```
-1z2+|
+1z2+
 ```
 
 Execution order:
@@ -26,14 +30,15 @@ Execution order:
 1     Push 1
   2   Push 2.
 
-    | Rebound: we move forward 1 char & reverse direction.
-      (since IP is facing the right.)
+      Rebound. When IP goes over the right bound,
+      it starts to execute the odd-indexed characters backwards.
 
    +  Add.
  z    Print TOS as a number.
 
      When IP goes over the left bound, execution is terminated, and 3 is printed.
 ```
+
 If you want to add the behavior of rebounding to your code, you have 3 options:
 
 * `|`: Directly rebound the IP, like I've described above.
