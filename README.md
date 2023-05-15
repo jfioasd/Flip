@@ -47,7 +47,7 @@ a    Bump IP like normal.
       Execution is terminated since IP goes out of bounds.
 ```
 
-## IP mirroring commands
+## IP mirroring
 
 Another thing I'd like to describe is the IP mirroring commands.
 
@@ -72,7 +72,7 @@ You can `{` for stepping IP left 1, and `}` for stepping IP right 1. `S` steps I
 
 You can also `b` to do an IP-relative jump (`IP += stack.pop()`)
 
-## Binary apply
+---
 
 P. S. There is also a binary apply <code>`</code> inspired by Factor. Syntax is like follows:
 ```
