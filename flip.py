@@ -8,7 +8,6 @@ class Flip:
         self.ip_step = 2
 
         self.stack = []
-        self.other = []
 
         self.done = False
         self.printed = False
@@ -145,17 +144,6 @@ class Flip:
             elif c == "h": # Push other accumulator to the stack.
                 self.stack.append(self.other_acc)
 
-            elif c == "L": # swap the two stacks.
-                self.stack, self.other = self.other, self.stack
-            elif c == ",": # Copy other[-1] to stack.
-                self.stack.append(self.other[-1])
-            elif c == "U": # Pop other stack to this stack.
-                self.stack.append(self.other.pop())
-            elif c == "n": # Copy this stack to other stack.
-                self.other.append(self.stack[-1])
-            elif c == ".": # Pop stack to other.
-                self.other.append(self.stack.pop())
-
             elif c == "Z": # Sum the stack.
                 self.stack = [sum(self.stack)]
             elif c == "w": # Length of the stack.
@@ -173,14 +161,6 @@ class Flip:
                     self.stack.append(i)
             elif c == "k": # Take: (stack[-num:]).
                 self.keep(self.stack.pop())
-            elif c == "l": # Append last n items of other stack to this stack.
-                N = self.stack.pop()
-                self.stack += self.other[-N:]
-                self.other = self.other[:-N]
-            elif c == "C": # Cut.
-                N = self.stack.pop()
-                self.other = self.stack[N:]
-                self.stack = self.stack[:N]
             elif c == "X": # Remove all occurrences of TOS in stack.
                 N = self.stack.pop()
                 self.stack = list(filter(lambda x: x != N, self.stack))
