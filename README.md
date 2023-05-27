@@ -159,11 +159,7 @@ Flip has a stack and 2 accumulators. The relevant operations are listed below:
 |`\|` | Mirror the IP. |
 |`:` | mirror if tos is nonzero (pops tos). |
 |`$`| Mirror if TOS is nonzero (does not pop TOS.) |
-| `{` | `IP -= 1`. (Does not affect IP's step.) |
-| `}` | `IP += 1`. |
-| `S` | If `stack.pop()` is truthy, `IP -= 1`. |
 |`&`| Decrement acc. If acc > 0, mirror. (downwards `repeat` loop) |
-|`b` | IP-relative jump: `IP += stack.pop()` |
 |`)` | Increment IP's step by 1. |
 |`(` | Decrement IP's step by 1. |
 |`#` | End the program.|
