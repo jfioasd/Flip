@@ -258,9 +258,6 @@ class Flip:
                     self.stack.append(0)
                 else:
                     self.stack.append(ord(x))
-            elif c == "V": # Read a single integer from input (newline-terminated).
-                x = input()
-                self.stack.append(eval(x))
             elif c == "_": # Read a single line from input, then push all character codes to stack.
                 x = eval(input())
                 if isinstance(x, str):
@@ -269,6 +266,8 @@ class Flip:
                 elif isinstance(x, list):
                     for i in x:
                         self.stack.append(i)
+                elif isinstance(x, (int, float)):
+                    self.stack.append(x)
             elif c == "@": # Debug: Output stack as an array.
                 print(self.stack)
 
