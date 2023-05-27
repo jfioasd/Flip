@@ -187,6 +187,7 @@ Flip has a stack and 2 accumulators. The relevant operations are listed below:
 |:-:  |      :-: |
 | `d` | log10. |
 | `E`| Absolute value. |
+| `G`| Truncate to integer. |
 
 ### Stack operations
 
