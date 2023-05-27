@@ -123,7 +123,7 @@ _            Read a list from the input (dumping onto the stack)
  #          End the program
 ```
 
-If you want to do a map loop, just do whatever operation you want on the TOS. But make sure you push a condition of `1` at the end.
+If you want to do a map loop, just do whatever operation you want on the TOS, and push a condition of `1` at the end of the filter body.
 
 ---
 
