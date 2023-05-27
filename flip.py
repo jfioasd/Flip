@@ -169,9 +169,6 @@ class Flip:
                     self.stack.append(self.stack.index(N))
                 except ValueError:
                     self.stack.append(-1)
-            elif c == "u": # Push whether stack contains N.
-                N = self.stack.pop()
-                self.stack.append(int(N in self.stack))
             elif c == "Q": # Count number of occurrences of TOS in stack.
                 N = self.stack.pop()
                 self.stack.append(self.stack.count(N))
