@@ -222,7 +222,7 @@ Flip has a stack and 2 accumulators. The relevant operations are listed below:
 |`)` | Increment IP's step by 1. |
 |`(` | Decrement IP's step by 1. |
 |`#` | End the program.|
-|`?`| Pop `cond, N`; Skip next `N` commands if `cond` is 0. |
+|`?`| Pop `cond, N`; Skip next `N` commands if `cond` is falsy. |
 
 ### I/O
 |Instruction|Description|
@@ -233,4 +233,4 @@ Flip has a stack and 2 accumulators. The relevant operations are listed below:
 |`z`| Pop & print TOS as a number. |
 |`q`| Pop & print TOS as a character. |
 |`g` | Read a single character from the input. Or `0` on EOF. |
-|`_` | Read a line from the input, eval as Python. If string: push all the character codes onto the stack. If list: push all items of list onto stack. If int / float: push item onto stack. |
+|`_` | Read a line from the input, eval as Python: </br> `str`: push the character codes onto the stack. </br> `list`: push all items of list onto stack. </br> `int` / `float`: push item onto stack. |
