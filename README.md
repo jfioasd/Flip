@@ -118,10 +118,8 @@ Flip has a stack and 2 accumulators. The relevant operations are listed below:
 | Instruction | Description |
 |:-:  |      :-: |
 | `d` | log10. |
-| `f` | Square root. |
 | `E`| Absolute value. |
 | `G` | Truncate to integer. |
-| `i` | Push whether TOS is a prime. |
 
 ### Stack operations
 
