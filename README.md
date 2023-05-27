@@ -71,8 +71,6 @@ Execution order:
       #      End the program.
 ```
 
-Note that right rebound also works as usual here.
-
 ## IP mirroring
 
 Another thing I'd like to describe is the IP mirroring commands.
