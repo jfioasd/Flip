@@ -15,7 +15,7 @@ After halting, if nothing is outputted, the entire stack is `chr`'d before outpu
 ## IP wrapping
 
 ### Right bound
-Another thing is that execution the IP will wrap backwards for the right bound.
+Another thing is that during execution, the IP will wrap backwards for the right bound.
 
 Whenever IP points to a position after the end of program, the amount that IP goes over the last character is used as a backwards index to the next character scanned by IP.
 
