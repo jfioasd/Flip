@@ -33,13 +33,6 @@ class Flip:
         self.ip = len(self.prog) - (self.ip - len(self.prog)) - 1
         self.ip_step = - self.ip_step
 
-    def is_prime(self, num):
-        if num == 1: return 0
-        for i in range(2, int(math.sqrt(num))+1):
-            if num % i == 0:
-                return 0
-        return 1
-
     def run(self):
         if self.ip < 0:
             self.done = True
@@ -110,8 +103,6 @@ class Flip:
 
             elif c == "d": # log10.
                 self.stack.append(math.log10(self.stack.pop()))
-            elif c == "f": # Square root.
-                self.stack.append(math.sqrt(self.stack.pop()))
             elif c == "E": # Absolute value.
                 self.stack.append(abs(self.stack.pop()))
             elif c == "G": # Truncate to integer.
@@ -167,8 +158,6 @@ class Flip:
                     for j in range(N):
                         tmp.append(i)
                 self.stack = tmp
-            elif c == "i": # Push whether TOS is a prime.
-                self.stack.append(self.is_prime(self.stack.pop()))
             elif c == "T": # Push whether all items in the stack is truthy.
                 self.stack = [int(all(self.stack))]
             elif c == "e": # Push stack[N]. (Modular)
@@ -273,8 +262,13 @@ class Flip:
                 x = input()
                 self.stack.append(eval(x))
             elif c == "_": # Read a single line from input, then push all character codes to stack.
-                for i in input():
-                    self.stack.append(ord(i))
+                x = eval(input())
+                if isinstance(x, str):
+                    for i in x:
+                        self.stack.append(ord(i))
+                elif isinstance(x, list):
+                    for i in x:
+                        self.stack.append(i)
             elif c == "@": # Debug: Output stack as an array.
                 print(self.stack)
 
