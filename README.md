@@ -86,7 +86,16 @@ If you want to add the behavior of mirroring to your code, you have 4 options:
 * `|`: Directly mirror the IP, like I've described above.
 * `:`: Only mirror if TOS is nonzero (pops TOS).
 * `$`: Mirror if TOS is nonzero (does not pop TOS).
-* `&`: A kind of `repeat` loop: Decrement the accumulator, and mirror if `acc > 0`.
+* `&`: A kind of `filter` loop. Described below.
+
+### How the filter loop works
+Basically, the filter loop does the following in each iteration:
+
+1. `self.acc -= 1`
+2. Pop condition from TOS:
+    1. If condition is truthy: shift TOS downwards.
+    2. Otherwise: Drop TOS.
+3. If `self.acc > 0`: mirror the IP.
 
 ## Stuff from Backhand
 
@@ -179,7 +188,7 @@ Flip has a stack and 2 accumulators. The relevant operations are listed below:
 |`\|` | Mirror the IP. |
 |`:` | mirror if tos is nonzero (pops tos). |
 |`$`| Mirror if TOS is nonzero (does not pop TOS.) |
-|`&`| Decrement acc. If acc > 0, mirror. (downwards `repeat` loop) |
+|`&`| Filter loop. |
 |`)` | Increment IP's step by 1. |
 |`(` | Decrement IP's step by 1. |
 |`#` | End the program.|
