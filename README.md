@@ -147,6 +147,11 @@ Flip has a stack and 2 accumulators. The relevant operations are listed below:
 | :---: | :-: |
 | `0-9`       | Push a number onto the stack (single-digit). |
 | `j`         | Push `10`. |
+| `u`         | Push `30`. |
+| `U`         | Push `12`. |
+| `y`         | Push `25`. |
+| `C`         | Push `100`. |
+| `b`         | Push `20`. |
 | `"`         | Start / End string mode, in which all characters in betwen have their `ord` codes pushed onto the stack. |
 | `'`         | Push the ord code of the next character read by IP. |
 
