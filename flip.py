@@ -211,8 +211,16 @@ class Flip:
                     self.rev_d()
                     return
                 # Like above
-            elif c == "&": # "Times" loop (using acc as counter).
+            elif c == "&": # "Filter" loop (using acc as counter).
+                # Expects a condition on the stack (and current item).
                 self.acc -= 1
+
+                cond = self.stack.pop()
+                if not cond:
+                    self.stack.pop()
+                else: # Shift TOS downwards
+                    self.stack = self.stack[-1:] + self.stack[:-1]
+
                 if self.acc > 0:
                     self.rev_d()
                     return
