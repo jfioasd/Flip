@@ -76,6 +76,16 @@ class Flip:
                 self.stack.append(int(c))
             elif c == "j": # 10.
                 self.stack.append(10)
+            elif c == "u": # 30.
+                self.stack.append(30)
+            elif c == "U": # 12.
+                self.stack.append(12)
+            elif c == "y": # 25.
+                self.stack.append(25)
+            elif c == "C": # 100.
+                self.stack.append(100)
+            elif c == "b": # 20.
+                self.stack.append(20)
 
             elif c == "+": # Addition.
                 self.stack.append(self.stack.pop() + self.stack.pop())
@@ -261,6 +271,7 @@ class Flip:
                     self.stack.append(x)
             elif c == "@": # Debug: Output stack as an array.
                 print(self.stack)
+                self.printed = True
 
             elif c == "#": # End the prog.
                 self.done = True
