@@ -14,9 +14,10 @@ After halting, if nothing is outputted, the entire stack is `chr`'d before outpu
 
 ## IP wrapping
 
-Another thing is that execution will be terminated if the IP goes out of the left bound, but the IP will wrap backwards for the right bound.
+### Right bound
+Another thing is that execution the IP will wrap backwards for the right bound.
 
-Wrapping: Whenever IP points to a position after the end of program, the amount that IP goes over the last character is used as a backwards index to the next character scanned by IP.
+Whenever IP points to a position after the end of program, the amount that IP goes over the last character is used as a backwards index to the next character scanned by IP.
 
 This can be visualized as follows (suppose our program is 5 chars):
 ```
@@ -46,6 +47,31 @@ a    Bump IP like normal.
  b
       Execution is terminated since IP goes out of bounds.
 ```
+
+### Left bound
+Left bound is similar to right bound, because it also uses the IP offset as a backwards index. However, IP is set to `len(self.prog) - self.ip`.
+
+Since the IP will almost always step to the index `-1` if it is facing left, you can expect that IP will (usually) jump to the last character of the program.
+
+E.g. :
+
+```
+1B2A| # C
+```
+
+Execution order:
+```
+1
+  2
+    |        Mirror: reflect IP
+   A
+ B
+             Index of -1: IP is set to len(prog) - 1
+        C    This means it continues at the character C.
+      #      End the program.
+```
+
+Note that right rebound also works as usual here.
 
 ## IP mirroring
 
