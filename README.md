@@ -140,7 +140,7 @@ Flip has a stack and 2 accumulators. The relevant operations are listed below:
 |`Z` | Push the sum of the stack (clears the previous stack). |
 | `w` | Push the length of the stack. |
 |`R` | Reverse the stack. |
-| `m` | Shift bottom of stack to TOS. |
+| `m` | Pop `N`: `stack = self.stack[N:] + self.stack[:N]` |
 |`t` | Sort the stack. |
 |`J` | Generate inclusive range. Pops `L, R`, Pushes `range(L, R+1)` dumped onto the stack. |
 |`k` | Take: `stack = stack[-stack.pop():]`|
