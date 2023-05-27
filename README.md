@@ -97,6 +97,36 @@ Basically, the filter loop does the following in each iteration:
     2. Otherwise: Drop TOS.
 3. If `self.acc > 0`: mirror the IP.
 
+Confused? I'll use an example that filters out all even-indexed items of the input list:
+
+```
+_#w@A&aI1
+```
+
+Explanation:
+```
+_            Read a list from the input (dumping onto the stack)
+  w          Push the length of the stack
+    A        Store the length to the accumulator
+             ## Filter loop ##
+      a          Push accumulator
+        1
+       I         Bitwise AND with 1 (this is our condition of the filter loop)
+     &           This does the following:
+                     1. acc -= 1
+                     2. Pop the condition (which is the parity of our iteration index)
+                         i. If condition is truthy, we put TOS to the bottom.
+                         ii. Otherwise, if it's falsy, drop TOS. (No stack shifting happens)
+                     3. If acc > 0: mirror the IP.
+                 So basically this goes back to `a` until the filter loop is done.
+            ## End filter loop ##
+            
+   @        Print the entire stack as a list
+ #          End the program
+```
+
+If you want to do a map loop, just do whatever operation you want on the TOS. But make sure you push a condition of `1` at the end.
+
 ## Stuff from Backhand
 
 Like Backhand, you can `)` to increment the step of the IP, and `(` to decrement the step of the IP.
