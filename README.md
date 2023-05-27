@@ -125,9 +125,11 @@ _            Read a list from the input (dumping onto the stack)
 
 If you want to do a map loop, just do whatever operation you want on the TOS. But make sure you push a condition of `1` at the end.
 
-(Reduce loops aren't as common as map / filter loops, so I didn't make a separate command for it. However, they can be implemented quite easily.
+---
 
-One approach: repeat `len(stack) - 1` times: 1) shift bottom of stack to top (i.e. `1 m`). 2) Apply whatever binary operation you want in the reduce loop. Repetition can be implemented as a `:` with the accumulator pushed as the condition of the `:`.)
+Reduce loops aren't as common as map / filter loops, so I didn't make a separate command for it. However, they can be implemented quite easily.
+
+One approach: repeat `len(stack) - 1` times: 1) shift bottom of stack to top (i.e. `1 m`). 2) Apply whatever binary operation you want in the reduce loop. Repetition can be implemented as a `:` with the accumulator pushed as the condition of the `:`.
 
 ## Stuff from Backhand
 
