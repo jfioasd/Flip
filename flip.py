@@ -34,8 +34,8 @@ class Flip:
         self.ip_step = - self.ip_step
 
     def run(self):
-        if self.ip < 0:
-            self.done = True
+        if self.ip < 0: # Implicit wrap on left bound
+            self.ip = len(self.prog) - self.ip
             return
 
         if self.ip >= len(self.prog):
