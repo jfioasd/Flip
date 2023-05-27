@@ -179,5 +179,4 @@ Flip has a stack and 2 accumulators. The relevant operations are listed below:
 |`z`| Pop & print TOS as a number. |
 |`q`| Pop & print TOS as a character. |
 |`g` | Read a single character from the input. Or `0` on EOF. |
-|`V` | Read a single newline-terminated integer from the input. |
-|`_` | Read a line from the input, eval as Python. If string: push all the character codes onto the stack. If list: push all items of list onto stack. |
+|`_` | Read a line from the input, eval as Python. If string: push all the character codes onto the stack. If list: push all items of list onto stack. If int / float: push item onto stack. |
