@@ -100,7 +100,6 @@ class Flip:
             elif c == "/": # Float Division.
                 RHS, LHS = self.stack.pop(), self.stack.pop()
                 self.stack.append(LHS / RHS)
-                self.stack.append(LHS / RHS)
             elif c == "^": # Exponentiation.
                 RHS, LHS = self.stack.pop(), self.stack.pop()
                 self.stack.append(LHS ** RHS)
