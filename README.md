@@ -150,7 +150,6 @@ Flip has a stack and 2 accumulators. The relevant operations are listed below:
 |`X` | Remove all occurrences of TOS from the stack. |
 |`e` | Modular indexing: push `stack[stack.pop() % len(stack)]`. |
 |`x` | Index of TOS in stack, or `-1` if not found. |
-|`u` | Push 1 if the stack contains TOS, 0 otherwise. |
 |`Q` | Push number of occurrences of TOS in stack. |
 
 ### Control flow
