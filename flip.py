@@ -273,8 +273,6 @@ class Flip:
 
             elif c == "#": # End the prog.
                 self.done = True
-            elif c == "K": # Skip the next n chars.
-                self.skip_n = self.stack.pop()
             elif c == "?": # If TOS is zero, skip the next char.
                 # Pops the top of stack.
                 N, cond = self.stack.pop(), self.stack.pop()
