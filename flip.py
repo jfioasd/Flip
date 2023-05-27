@@ -132,8 +132,9 @@ class Flip:
                 self.stack.append(len(self.stack))
             elif c == "R": # Reverse the stack.
                 self.stack = self.stack[::-1]
-            elif c == "m": # Put bottom of the stack to TOS.
-                self.stack = self.stack[1:] + [self.stack[0]]
+            elif c == "m": # Pop N: Put bottom N items of the stack to TOS.
+                N = self.stack.pop()
+                self.stack = self.stack[N:] + self.stack[:N]
             elif c == "t": # Sort the stack.
                 self.stack = sorted(self.stack)
             elif c == "J": # Generate inclusive range.
