@@ -97,7 +97,7 @@ Basically, the filter loop does the following in each iteration:
     2. Otherwise: Drop TOS.
 3. If `self.acc > 0`: mirror the IP.
 
-Confused? I'll use an example that filters out all even-indexed items of the input list:
+I'll use an example that filters out all odd-indexed items of the input list:
 
 ```
 _#w@A&aI1
