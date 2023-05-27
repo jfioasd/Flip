@@ -49,7 +49,7 @@ a    Bump IP like normal.
 ```
 
 ### Left bound
-If the IP goes over the left bound, thr rebounding mechanism is similar to the right bound, because it also uses the IP offset as a backwards index. IP is set to `len(self.prog) - self.ip`.
+If the IP goes over the left bound, the rebounding is similar to the right bound, because it also uses the IP offset as a backwards index. IP is set to `len(self.prog) - self.ip`.
 
 Since the IP will usually step to the index `-1` if it is facing left, you can expect that IP will (usually) jump to the last character of the program.
 
