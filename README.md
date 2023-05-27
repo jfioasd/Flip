@@ -92,7 +92,7 @@ If you want to add the behavior of mirroring to your code, you have 4 options:
 
 Like Backhand, you can `)` to increment the step of the IP, and `(` to decrement the step of the IP.
 
-I did not add IP stepping because it disrupts the normal flow of a program (which is useless for golfing). However, I added `?` to conditionally skip the next N iterations of the program.
+I also added `?` to conditionally skip the next N iterations of the program.
 
 ## Data structures
 Flip has a stack and 2 accumulators. The relevant operations are listed below:
