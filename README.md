@@ -179,15 +179,14 @@ Flip has a stack and 2 accumulators. The relevant operations are listed below:
 |`!` | Logical not. |
 |`c`| Logical and. |
 |`B`| Logical or. |
-|`I`| Bitwise and. |
-|`p`| Bitwise or. |
-|`r`| Bitwise xor. |
+|`I`| Bitwise and. (both operands rounded with `int()`) |
+|`p`| Bitwise or. (both operands rounded with `int()`) |
+|`r`| Bitwise xor. (both operands rounded with `int()`) |
 
 | Instruction | Description |
 |:-:  |      :-: |
 | `d` | log10. |
 | `E`| Absolute value. |
-| `G` | Truncate to integer. |
 
 ### Stack operations
 
