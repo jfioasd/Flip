@@ -15,7 +15,7 @@ After halting, if nothing is outputted, the entire stack is `chr`'d before outpu
 ## IP wrapping
 
 ### Right bound
-Another thing is that during execution, the IP will wrap backwards for the right bound.
+If the IP goes over the right bound, it will wrap backwards (like Backhand).
 
 Whenever IP points to a position after the end of program, the amount that IP goes over the last character is used as a backwards index to the next character scanned by IP.
 
@@ -51,7 +51,7 @@ a    Bump IP like normal.
 ### Left bound
 Left bound is similar to right bound, because it also uses the IP offset as a backwards index. However, IP is set to `len(self.prog) - self.ip`.
 
-Since the IP will almost always step to the index `-1` if it is facing left, you can expect that IP will (usually) jump to the last character of the program.
+Since the IP will usually step to the index `-1` if it is facing left, you can expect that IP will (usually) jump to the last character of the program.
 
 E.g. :
 
@@ -72,8 +72,6 @@ Execution order:
 ```
 
 ## IP mirroring
-
-Another thing I'd like to describe is the IP mirroring commands.
 
 I'll first explain how mirroring works.
 
@@ -97,7 +95,7 @@ Basically, the filter loop does the following in each iteration:
     2. Otherwise: Drop TOS.
 3. If `self.acc > 0`: mirror the IP.
 
-I'll use an example that filters out all odd-indexed items of the input list:
+An example that filters out all odd-indexed items of the input list:
 
 ```
 _#w@A&aI1
@@ -131,7 +129,7 @@ Reduce loops aren't as common as map / filter loops, so I didn't make a separate
 
 ## Stuff from Backhand
 
-Like Backhand, you can `)` to increment the step of the IP, and `(` to decrement the step of the IP.
+Like Backhand, you can use `)` to increment the step of the IP, and `(` to decrement the step of the IP.
 
 I also added `?` to conditionally skip the next N iterations of the program.
 
