@@ -49,7 +49,7 @@ a    Bump IP like normal.
 ```
 
 ### Left bound
-Left bound is similar to right bound, because it also uses the IP offset as a backwards index. However, IP is set to `len(self.prog) - self.ip`.
+Left bound is similar to right bound, because it also uses the IP offset as a backwards index. IP is set to `len(self.prog) - self.ip`.
 
 Since the IP will usually step to the index `-1` if it is facing left, you can expect that IP will (usually) jump to the last character of the program.
 
@@ -72,8 +72,6 @@ Execution order:
 ```
 
 ## IP mirroring
-
-I'll first explain how mirroring works.
 
 * If the IP facing left, it moves left 1 position. If it's facing right, it moves right 1 position.
 
