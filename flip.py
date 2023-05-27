@@ -114,6 +114,8 @@ class Flip:
                 self.stack.append(math.log10(self.stack.pop()))
             elif c == "E": # Absolute value.
                 self.stack.append(abs(self.stack.pop()))
+            elif c == "G": # Truncate to integer.
+                self.stack.append(int(self.stack.pop()))
 
             elif c == "D": # Dup.
                 self.stack.append(self.stack[-1])
@@ -192,13 +194,13 @@ class Flip:
                 self.stack.append(int(LHS and RHS))
             elif c == "I": # Bitwise and.
                 RHS, LHS = self.stack.pop(), self.stack.pop()
-                self.stack.append(int(LHS) & int(RHS))
+                self.stack.append(LHS & RHS)
             elif c == "p": # Bitwise or.
                 RHS, LHS = self.stack.pop(), self.stack.pop()
-                self.stack.append(int(LHS) | int(RHS))
+                self.stack.append(LHS | RHS)
             elif c == "r": # Bitwise xor.
                 RHS, LHS = self.stack.pop(), self.stack.pop()
-                self.stack.append(int(LHS) ^ int(RHS))
+                self.stack.append(LHS ^ RHS)
             elif c == "B": # Logical or.
                 RHS, LHS = self.stack.pop(), self.stack.pop()
                 self.stack.append(int(LHS or RHS))
