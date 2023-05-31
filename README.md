@@ -93,7 +93,7 @@ Basically, the filter loop does the following in each iteration:
     2. Otherwise: Drop TOS.
 3. If `self.acc > 0`: mirror the IP.
 
-#### An example
+#### An example of a filter loop
 
 The following program filters out all odd-indexed items of the input list:
 
@@ -127,7 +127,7 @@ If you want to do a map loop, just do whatever operation you want on the TOS, an
 
 ---
 
-Reduce loops aren't as common as map / filter loops, so I didn't make a separate command for it. However, they can be implemented quite easily.
+Reduce loops can be implemented quite easily.
 
 One approach: repeat `len(stack) - 1` times: 1) shift bottom of stack to top (i.e. `1 m`). 2) Apply whatever binary operation you want in the reduce loop. Repetition can be implemented as a `:` with the accumulator pushed as the condition of the `:`.
 
